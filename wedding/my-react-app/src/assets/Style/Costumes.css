@@ -1,0 +1,66 @@
+.costume-section {
+ background: linear-gradient(135deg, #100f0f, #D4AF37);
+
+}
+
+.costumes {
+    font-family: 'Poppins', sans-serif;
+}
+
+.costume-section p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    text-align: start;
+}
+
+.card-service {
+    background-color: #d40000 !important;
+    border: none !important;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-service .card-body {
+    background-color: #4A7A7E !important;
+    border: none !important;
+}
+
+.card-title {
+    font-family: 'Poppins', sans-serif;
+}
+
+.card-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+}
+
+.costume-section .card-service .card-body {
+    border: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
+.button .btn {
+    background-color: #ffffff;
+    color: rgb(9, 8, 8);
+    border-radius: 30px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+.button .btn:hover {
+   background-color: #FF6F61;
+    color: #ffffff;
+    transform: translateY(-3px);
+}
+
+
+.costume-section .card-service .card-img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.costume-section .card-service .card-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}

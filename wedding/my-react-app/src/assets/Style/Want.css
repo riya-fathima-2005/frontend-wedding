@@ -1,0 +1,20 @@
+.wantto {
+  color: maroon !important;
+  font-family: "Poppins", sans-serif;
+}
+.want-bg {
+  background-color: #e4dfda;
+  padding: 60px 20px;
+  margin-left: 110px;
+  margin-right: 110px;
+  margin-bottom: 50px;
+  border-radius: 20px;
+
+  /* Grey Shadow */
+  box-shadow: 0 10px 30px grey;
+}
+.want-para {
+  color: gray;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+}

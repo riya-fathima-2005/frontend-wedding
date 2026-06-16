@@ -1,0 +1,32 @@
+.found-section {
+  background-color: #f8f3ef ;
+  padding: 10px 0;
+}
+.found-card{
+  max-width: 1000px;
+  margin: auto;
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.found-section h2 {
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 15px;
+  color: rgb(11, 10, 10);
+}
+.found-section p {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.david {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+

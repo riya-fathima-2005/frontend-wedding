@@ -1,0 +1,19 @@
+.container h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #010101;
+}
+
+.our-para {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: rgb(18, 17, 17);
+}
+
+.img-fluid {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.img-fluid:hover {
+    transform: scale(1.08);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}

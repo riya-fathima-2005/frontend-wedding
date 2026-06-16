@@ -1,0 +1,160 @@
+/* ===================================
+   FULL WIDTH BANNER
+=================================== */
+
+.imge-contain {
+
+    position: relative;
+
+    width: 100vw;
+
+    height: 520px;
+
+    overflow: hidden;
+
+    margin-left: calc(-50vw + 50%);
+
+    margin-bottom: 60px;
+}
+
+/* IMAGE */
+
+.wed8-img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+/* DARK OVERLAY */
+
+.imge-contain::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.65),
+            rgba(0,0,0,0.45)
+        );
+}
+
+/* ===================================
+   CENTER CONTENT
+=================================== */
+
+.banner-content {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    margin-left: 90px;
+    margin-top: 100px;
+
+    justify-content: center;
+
+    align-items: center;
+
+    z-index: 2;
+}
+
+/* HEADING */
+
+.banner-heading {
+
+    color: white;
+
+    font-size: 68px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    font-family: "Poppins", sans-serif;
+
+    text-align: center;
+}
+
+/* ===================================
+   BLOG CONTENT
+=================================== */
+
+.bloghead {
+
+    color: #1d1d1d;
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+    line-height: 1.3;
+
+    margin-bottom: 24px;
+
+    font-family: "Poppins", sans-serif;
+}
+
+.blogpara {
+
+    color: #555;
+
+    font-size: 16px;
+
+    line-height: 2;
+
+    font-family: "Poppins", sans-serif;
+}
+
+/* LIST HEADINGS */
+
+.mb-4 h4 {
+
+    color: #111 !important;
+
+    font-family: "Poppins", sans-serif;
+
+    font-weight: 600 !important;
+
+    margin-bottom: 12px;
+}
+
+/* ===================================
+   MOBILE
+=================================== */
+
+@media (max-width: 768px) {
+
+    .imge-contain {
+
+        height: 420px;
+    }
+
+    .banner-heading {
+
+        font-size: 42px;
+    }
+
+    .bloghead {
+
+        font-size: 30px;
+    }
+
+    .blogpara {
+
+        font-size: 15px;
+
+        line-height: 1.9;
+    }
+
+}

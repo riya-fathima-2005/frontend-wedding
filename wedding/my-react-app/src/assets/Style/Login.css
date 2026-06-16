@@ -1,0 +1,117 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #aa4141, #dcc4ad);
+  font-family: "Poppins", sans-serif;
+  padding: 20px;
+}
+.login-form {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-form h2 {
+  color: maroon;
+  margin-bottom: 25px;
+  font-family: "Poppins", sans-serif;
+}
+
+.input-group {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #4a7a7e;
+  font-family: "Poppins", sans-serif;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 10px !important;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: border 0.3s;
+  font-family: "Poppins", sans-serif;
+}
+
+.input-group input:focus {
+  border-color: #4a7a7e;
+  outline: none;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 14px;
+  background:  #832849;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-family: "Poppins", sans-serif;
+}
+
+.login-form button:hover {
+  background: #ad7c8e;
+}
+
+.signup-text {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.signup-text a {
+  color: maroon;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.signup-text a:hover {
+  text-decoration: underline;
+}
+
+.login-success {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  background: linear-gradient(135deg, #4a7a7e, #82b1b3);
+  text-align: center;
+}
+
+.loginbtn{
+  background-color:#601b34;
+}
+
+
+.login-success h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.login-success p {
+  font-size: 16px;
+}

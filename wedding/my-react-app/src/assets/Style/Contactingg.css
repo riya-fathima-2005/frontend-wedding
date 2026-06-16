@@ -1,0 +1,67 @@
+.contact-section {
+  background-color: #faeeee;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  border: 1px solid black;
+  margin-top:90px;
+}
+
+
+.contactedhead {
+  font-family: "Poppins", sans-serif;
+  color: rgb(15, 13, 13) !important;
+  margin-bottom: 16px;
+}
+
+.font{
+font-family: "Poppins", sans-serif;
+font-size: 16px;
+}
+
+.contactedpara {
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  color: #555;
+  line-height: 1.7;
+  text-align: start;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.contact-img {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+
+.founder-name {
+  font-size: 22px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: rgb(18, 15, 15) !important;
+  margin-bottom: 4px;
+}
+
+.founder-role {
+  font-size: 15px;
+  color: #666;
+  margin-bottom: 2px;
+}
+
+.founder-location {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  color: #888;
+}
+
+@media (max-width: 768px) {
+  .contactedhead {
+    text-align: center;
+  }
+
+  .contactedpara {
+    text-align: center;
+  }
+}

@@ -1,0 +1,54 @@
+.client-title {
+    font-family: 'Poppins', sans-serif;
+    color: rgb(8, 7, 7) !important;
+}
+
+.client-subtitle {
+    color: rgb(112, 112, 112);
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.client-card {
+    background:rgb(36, 32, 32);
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    justify-content: center !important;
+    align-items: center;
+}
+
+.client-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
+}
+
+.client-img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+}
+
+.client-name {
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+.client-location {
+    color: #ffffff;
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.client-wedding {
+
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+}
+
+.client-review {
+    font-size: 14px;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+}

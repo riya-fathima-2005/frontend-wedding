@@ -1,0 +1,49 @@
+.card-servicess {
+    background-color: #ffffff !important;
+    border: none !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 450px;
+    width: 100%;
+}
+
+.card-servicess:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.card-head {
+    font-family: 'Poppins', sans-serif;
+    color: rgb(252, 250, 250) !important;
+}
+
+.wedding-para {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: rgb(112, 112, 112);
+}
+
+.card-textt {
+    font-size: 14px;
+    color: black;
+}
+
+.btn.book-btn {
+    background-color: maroon !important;
+    color: #fff !important;
+    border: none !important;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    text-decoration: none !important;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+
+}
+
+.btn.book-btn:hover {
+    transform: translateY(-2px);
+    color: #ffffff;
+    background-color: goldenrod !important;
+}
+.wedding{
+    color: maroon !important;
+}

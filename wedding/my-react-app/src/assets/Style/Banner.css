@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+/* =========================
+   BANNER SECTION
+========================= */
+
+.banner-section {
+  width: 100%;
+  height: 100vh;
+
+  position: relative;
+  overflow: hidden;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* =========================
+   OVERLAY
+========================= */
+
+.banner-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0,0,0,0.55);
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.banner-side {
+  position: absolute;
+  margin-left: 80px;
+  top: 38%;
+  left: 8%;
+
+  transform: translateY(-38%);
+
+  z-index: 5;
+
+  color: white;
+}
+
+/* =========================
+   TAG
+========================= */
+
+.banner-tag {
+  display: inline-block;
+
+  padding: 10px 22px;
+
+  margin-bottom: 20px;
+
+  border-radius: 50px;
+
+  border: 1px solid rgba(255,255,255,0.2);
+
+  background: rgba(255,255,255,0.08);
+
+  backdrop-filter: blur(10px);
+
+  font-size: 11px;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+
+  font-family: "Poppins", sans-serif;
+}
+
+/* =========================
+   HEADINGS
+========================= */
+
+.heading-overlay {
+  display: block;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 4.5rem;
+
+  line-height: 1.05;
+
+  font-weight: 700;
+
+  margin: 0;
+
+  color: white;
+
+  text-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+/* =========================
+   GOLD TEXT
+========================= */
+
+.gold-text {
+  display: block;
+}
+
+/* =========================
+   SUB TEXT
+========================= */
+
+.small-line {
+  margin-top: 14px;
+
+  font-size: 14px;
+
+  letter-spacing: 2px;
+
+  color: rgba(255,255,255,0.85);
+
+  font-family: "Poppins", sans-serif;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.faq-button {
+  display: inline-block;
+
+  margin-top: 22px;
+
+  padding: 14px 34px;
+
+  border-radius: 50px;
+
+  background: #2d2d2d;
+
+  color: white;
+
+  text-decoration: none;
+
+  font-weight: 600;
+
+  transition: 0.3s;
+}
+
+.faq-button:hover {
+  background: #444;
+
+  color: white;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .banner-content {
+    left: 6%;
+    top: 40%;
+  }
+
+  .heading-overlay {
+    font-size: 3rem;
+  }
+
+  .small-line {
+    font-size: 12px;
+  }
+}

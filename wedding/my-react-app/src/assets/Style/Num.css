@@ -1,0 +1,184 @@
+/* =========================
+   MODERN PREMIUM COUNTER
+========================= */
+
+.num-section {
+  padding: 40px 20px;
+}
+
+/* =========================
+   BACKGROUND IMAGE SECTION
+========================= */
+
+.counter-bg {
+  background-size: cover;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+
+  border-radius: 24px;
+
+  padding: 40px 20px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  min-height: 260px;
+}
+
+/* BLACK + SILVER OVERLAY */
+
+.counter-bg::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to right,
+      rgba(0,0,0,0.55),
+      rgba(0,0,0,0.35),
+      rgba(0,0,0,0.65)
+    );
+
+  border-radius: 24px;
+}
+
+/* CONTENT ABOVE OVERLAY */
+
+.counter-bg .row {
+  position: relative;
+
+  z-index: 2;
+}
+
+/* =========================
+   COUNTER CARD
+========================= */
+
+.stat-card {
+  position: relative;
+
+  background: rgba(255,255,255,0.10);
+
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255,255,255,0.55);
+
+  border-radius: 24px;
+
+  padding: 40px 25px;
+
+  max-width: 240px;
+
+  margin: auto;
+
+  overflow: hidden;
+
+  transition: all 0.4s ease;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.18);
+
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* WHITE BORDER GLOW */
+
+.stat-card::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  border-radius: 24px;
+
+  border: 1px solid rgba(255,255,255,0.35);
+}
+
+/* HOVER EFFECT */
+
+.stat-card:hover {
+  transform: translateY(-10px);
+
+  background: rgba(255,255,255,0.14);
+
+  box-shadow:
+    0 18px 45px rgba(0,0,0,0.25);
+}
+
+/* =========================
+   NUMBER
+========================= */
+
+.stat-number {
+  font-size: 3.5rem;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-weight: 700;
+
+  color: #ffffff;
+
+  margin-bottom: 10px;
+
+  text-shadow:
+    0 5px 15px rgba(0,0,0,0.4);
+}
+
+/* =========================
+   LABEL
+========================= */
+
+.stat-label {
+  font-size: 13px;
+
+  letter-spacing: 4px;
+
+  text-transform: uppercase;
+
+  color: rgba(255,255,255,0.88);
+
+  font-family: "Poppins", sans-serif;
+
+  margin-bottom: 0;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+  .num-section {
+    padding: 50px 15px;
+  }
+
+  .counter-bg {
+    padding: 30px 15px;
+  }
+
+  .stat-card {
+    max-width: 200px;
+
+    padding: 32px 20px;
+
+    margin-bottom: 20px;
+  }
+
+  .stat-number {
+    font-size: 2.8rem;
+  }
+
+  .stat-label {
+    font-size: 11px;
+
+    letter-spacing: 2px;
+  }
+}

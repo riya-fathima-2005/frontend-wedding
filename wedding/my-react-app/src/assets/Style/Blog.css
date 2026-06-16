@@ -1,0 +1,141 @@
+/* =========================
+   BANNER
+========================= */
+
+.imagesec {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.decore-img {
+  width: 100%;
+  height: 560px;
+  object-fit: cover;
+  display: block;
+}
+
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 70px;
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 2px;
+}
+
+/* =========================
+   BLOG SECTION
+========================= */
+
+.blog-section {
+  background-color: #fff;
+  padding: 120px 70px 80px;
+}
+
+/* CARD */
+
+.blog-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  height: 100%;
+  transition: 0.3s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-6px);
+}
+
+/* IMAGE */
+
+.blog-card img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 14px;
+  transition: transform 0.4s ease;
+}
+
+.blog-card img:hover {
+  transform: scale(1.03);
+}
+
+/* TITLE */
+
+.bloghead {
+  font-family: "Poppins", sans-serif;
+  color: #111;
+  margin-top: 20px;
+  line-height: 1.4;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+/* PARAGRAPH */
+
+.blogpara {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  color: #666;
+  line-height: 1.8;
+  margin-top: 15px;
+  text-align: justify;
+}
+
+/* DATE */
+
+.blog-section .text-muted {
+  font-size: 0.9rem;
+  margin-top: 10px;
+  display: block;
+}
+
+/* BUTTON */
+
+.faq-button {
+  display: inline-block;
+  padding: 12px 30px;
+  border-radius: 30px;
+  background-color: rgb(33, 27, 27);
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.3s ease;
+}
+
+.faq-button:hover {
+  background-color: rgb(47, 42, 44);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .decore-img {
+    height: 350px;
+  }
+
+  .overlay-text {
+    font-size: 42px;
+  }
+
+  .blog-section {
+    padding: 70px 20px;
+  }
+
+  .blog-card img {
+    height: 240px;
+  }
+
+  .bloghead {
+    font-size: 22px;
+  }
+}

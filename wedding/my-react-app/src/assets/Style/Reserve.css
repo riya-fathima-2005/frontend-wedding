@@ -1,0 +1,221 @@
+/* =========================
+   RESERVE PAGE
+========================= */
+
+.reserve-page {
+  padding: 120px 0;
+
+  background: #f8f8f8;
+
+  min-height: 100vh;
+}
+
+/* WRAPPER */
+
+.reserve-wrapper {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 60px;
+
+  align-items: center;
+}
+
+/* LEFT */
+
+.reserve-title {
+  font-size: 52px;
+
+  font-weight: 700;
+
+  color: #222;
+
+  margin-bottom: 25px;
+
+  font-family: "Poppins", sans-serif;
+}
+
+.reserve-subtitle {
+  font-size: 18px;
+
+  line-height: 1.9;
+
+  color: #666;
+
+  margin-bottom: 35px;
+
+  font-family: "Poppins", sans-serif;
+}
+
+.reserve-image {
+  width: 100%;
+
+  height: 550px;
+
+  object-fit: cover;
+
+  border-radius: 30px;
+
+  box-shadow:
+    0 15px 40px rgba(0,0,0,0.1);
+}
+
+/* FORM BOX */
+
+.reserve-form-box {
+  background: white;
+
+  padding: 50px;
+
+  border-radius: 30px;
+
+  box-shadow:
+    0 15px 40px rgba(0,0,0,0.08);
+}
+
+.reserveselect{
+    background: white;
+
+  padding: 20px;
+
+  border-radius: 15px;
+
+  box-shadow:
+    0 15px 40px rgba(0,0,0,0.08);
+}
+/* FORM TITLE */
+
+.form-title {
+  font-size: 38px;
+
+  font-weight: 700;
+
+  margin-bottom: 35px;
+
+  color: #222;
+
+  font-family: "Poppins", sans-serif;
+}
+
+/* FORM */
+
+.reserve-form {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 20px;
+}
+
+/* INPUT */
+
+.reserve-form input,
+.reserve-form textarea {
+  width: 100%;
+
+  padding: 18px 20px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 14px;
+
+  outline: none;
+
+  font-size: 16px;
+
+  font-family: "Poppins", sans-serif;
+
+  transition: all 0.3s ease;
+}
+
+.reserve-form input:focus,
+.reserve-form textarea:focus {
+  border-color: #c89b3c;
+
+  box-shadow:
+    0 0 0 4px rgba(200,155,60,0.15);
+}
+
+/* BUTTON */
+
+.reserve-form button {
+  padding: 18px;
+
+  border: none;
+
+  border-radius: 50px;
+
+  background: #111;
+
+  color: white;
+
+  font-size: 17px;
+
+  font-weight: 600;
+
+  margin-top: 10px;
+
+  transition: all 0.4s ease;
+
+  font-family: "Poppins", sans-serif;
+}
+
+.reserve-form button:hover {
+  background: #c89b3c;
+
+  color: black;
+
+  transform: translateY(-3px);
+}
+
+.reserveelect{
+  
+
+  padding: 20;
+
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 992px) {
+
+  .reserve-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .reserve-title {
+    font-size: 40px;
+  }
+
+  .reserve-image {
+    height: 420px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .reserve-page {
+    padding: 80px 0;
+  }
+
+  .reserve-form-box {
+    padding: 30px;
+  }
+
+  .reserve-title {
+    font-size: 32px;
+  }
+
+  .form-title {
+    font-size: 28px;
+  }
+
+  .reserve-subtitle {
+    font-size: 16px;
+  }
+
+  .reserve-image {
+    height: 300px;
+  }
+}

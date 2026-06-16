@@ -1,0 +1,145 @@
+.howhost-section {
+  padding: 100px 0;
+  background: #fff;
+}
+
+/* HEADING */
+
+.host-subtitle {
+  color: #070707;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  font-family: "Poppins", sans-serif;
+}
+
+.howhost-heading {
+  font-size: 48px;
+  font-weight: 700;
+  color: #111;
+  font-family: "Poppins", sans-serif;
+}
+
+/* GRID */
+
+.host-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px;
+  margin-top: 60px;
+}
+
+/* CARD */
+
+.host-card {
+  background: #f8f8f8;
+  border-radius: 30px;
+  padding: 45px 35px;
+  min-height: 380px;
+
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.host-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* NUMBER */
+
+.host-number {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+
+  background: #000;
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 30px;
+  font-weight: 700;
+
+  margin-bottom: 35px;
+
+  font-family: "Poppins", sans-serif;
+}
+
+/* TITLE */
+
+.step-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111;
+
+  line-height: 1.2;
+  margin-bottom: 20px;
+
+  padding-left: 18px;
+  border-left: 5px solid #000;
+
+  font-family: "Poppins", sans-serif;
+}
+
+/* DESCRIPTION */
+
+.step-description {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #666;
+
+  font-family: "Poppins", sans-serif;
+}
+
+/* TABLET */
+
+@media (max-width: 992px) {
+  .host-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .howhost-heading {
+    font-size: 40px;
+  }
+
+  .step-title {
+    font-size: 28px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+  .host-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .host-card {
+    min-height: auto;
+    padding: 35px 25px;
+  }
+
+  .howhost-heading {
+    font-size: 32px;
+  }
+
+  .step-title {
+    font-size: 24px;
+  }
+
+  .step-description {
+    font-size: 16px;
+  }
+
+  .host-number {
+    width: 70px;
+    height: 70px;
+    font-size: 26px;
+  }
+}
