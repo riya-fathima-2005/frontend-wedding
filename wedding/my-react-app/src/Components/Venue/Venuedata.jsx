@@ -98,11 +98,18 @@
                     >
                       <div className="venue-image-wrapper">
                         <img
-                          src={
-                            venue.image
-                              ? `${API_URL}${venue.image}`
-                              : wed7
-                          }
+  src={
+    venue.image
+      ? venue.image.includes("cloudinary.com")
+        ? `https://${venue.image.replace(/^https?:\/\//, "")}`
+        : venue.image.startsWith("http")
+        ? venue.image
+        : `${API_URL}${venue.image}`
+      : wed7
+  }
+  alt={venue.name}
+  className="venue-image"
+/>
                           alt={venue.name}
                           className="venue-image"
                         />
