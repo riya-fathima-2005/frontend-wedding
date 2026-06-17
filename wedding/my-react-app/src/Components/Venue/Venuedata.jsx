@@ -100,9 +100,7 @@
                         <img
   src={
     venue.image
-      ? venue.image.includes("cloudinary.com")
-        ? `https://${venue.image.replace(/^https?:\/\//, "")}`
-        : venue.image.startsWith("http")
+      ? venue.image.startsWith("http")
         ? venue.image
         : `${API_URL}${venue.image}`
       : wed7
@@ -110,9 +108,7 @@
   alt={venue.name}
   className="venue-image"
 />
-                          alt={venue.name}
-                          className="venue-image"
-                        />
+
                       </div>
 
                       <div className="venue-content">
