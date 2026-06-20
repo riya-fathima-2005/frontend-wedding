@@ -82,7 +82,7 @@ reader.onloadend = () => {
 };
 
 reader.readAsDataURL(profileImage);
-
+};
 
 
   return (
