@@ -1,22 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "../../assets/Style/Recently.css";
 
 const Recentwed = () => {
   const navigate = useNavigate();
 
-  const allWeddings =
-    JSON.parse(localStorage.getItem("allWeddings")) || [];
+  const [allWeddings, setAllWeddings] = useState([]);
 
-  const handleCardClick = (weddingType) => {
-    navigate("/christ", {
-      state: { weddingType },
-    });
-  };
+  useEffect(() => {
+    const fetchWeddings = async () => {
+      try {
+        const response = await axios.get(
+          "https://wedding-book.onrender.com/api/weddings/"
+        );
+
+        console.log("Wedding Data:", response.data);
+
+        setAllWeddings(response.data);
+      } catch (error) {
+        console.log("Error fetching weddings:", error);
+      }
+    };
+
+    fetchWeddings();
+  }, []);
 
   return (
     <div>
       <div className="container mb-5">
+
         <h2 className="text-center recent mt-5">
           Choose a celebration, Live the culture
         </h2>
@@ -28,48 +41,57 @@ const Recentwed = () => {
           and we ensure every detail reflects you.
         </p>
 
-        {/* User Weddings */}
+        {/* Weddings */}
 
         {allWeddings.length > 0 && (
-          <>
+          <div className="row justify-content-center">
 
-
-            <div className="row justify-content-center">
-              {allWeddings.slice(0, 3).map((wedding, index) => (
+            {allWeddings.slice(0, 3).map((wedding, index) => (
+              <div
+                className="col-md-4 d-flex justify-content-center mb-4"
+                key={index}
+              >
                 <div
-                  className="col-md-4 d-flex justify-content-center mb-4"
-                  key={index}
+                  className="card card-overlay text-center border-0 card-service no-focus-border"
+                  onClick={() =>
+                    navigate("/wedding-details", {
+                      state: wedding,
+                    })
+                  }
                 >
-                  <div
-                    className="card card-overlay text-center border-0 card-service no-focus-border"
-                    onClick={() =>
-                      navigate("/wedding-details", {
-                        state: wedding,
-                      })
-                    }
-                  >
-                    <img
-                      src={wedding.profileImage}
-                      alt="Wedding"
-                      className="card-img"
-                    />
 
-                    <div className="card-img-overlay d-flex flex-column justify-content-end text-center text-white">
-                      <h5 className="card-title">
-                        {wedding.firstname} &{" "}
-                        {wedding.partnerFirstname}
-                      </h5>
+                  <img
+                    src={wedding.profile_image}
+                    alt="Wedding"
+                    className="card-img"
+                  />
 
-                      <p className="card-text">
-                        Wedding Profile
-                      </p>
-                    </div>
+                  <div className="card-img-overlay d-flex flex-column justify-content-end text-center text-white">
+
+                    <h5 className="card-title">
+                      {wedding.firstname} &{" "}
+                      {wedding.partner_firstname}
+                    </h5>
+
+                    <p className="card-text">
+                      Wedding Profile
+                    </p>
+
                   </div>
+
                 </div>
-              ))}
-            </div>
-          </>
+              </div>
+            ))}
+
+          </div>
         )}
+
+        {allWeddings.length === 0 && (
+          <p className="text-center">
+            No weddings available
+          </p>
+        )}
+
       </div>
     </div>
   );

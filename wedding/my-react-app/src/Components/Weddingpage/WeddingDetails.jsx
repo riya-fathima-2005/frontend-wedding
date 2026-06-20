@@ -27,7 +27,7 @@ console.log(wedding);
     <div>
       {wedding.profileImage && (
         <img
-          src={wedding.profileImage}
+          src={wedding.profile_image}
           alt="Wedding"
           className="wedding-image1"
         />
@@ -38,7 +38,7 @@ console.log(wedding);
     <div className="wedding-body">
 
       <h2 className="wedding-title1">
-        {wedding.firstname} & {wedding.partnerFirstname}
+        {wedding.firstname} & {wedding.partner_firstname}
       </h2>
 
       <div className="row">
@@ -56,16 +56,12 @@ console.log(wedding);
 
           <div className="detail-box">
             <strong>Phone Number</strong>
-            {wedding.phonenumber}
+            {wedding.phone}
           </div>
 
           <div className="detail-box">
-            <strong>Partner Email</strong>
-            {wedding.partnerEmail}
-          </div>
-          <div className="detail-box">
   <strong>Manager Contact - Please Contact</strong>
-  {wedding.managerPhone || "Not Added"}
+  {wedding.manager_phone || "Not Added"}
 </div>
           
         </div>
@@ -73,17 +69,17 @@ console.log(wedding);
         <div className="col-md-6">
           <div className="detail-box">
             <strong>Wedding Date</strong>
-            {wedding.weddingDate || "Not Added"}
+            {wedding.wedding_date || "Not Added"}
           </div>
 
           <div className="detail-box">
             <strong>Venue</strong>
-            {wedding.venueName || "Not Added"}
+            {wedding.custom_venue || "Not Added"}
           </div>
 
           <div className="detail-box">
             <strong>Food Type</strong>
-            {wedding.foodType || "Not Added"}
+            {wedding.food_type || "Not Added"}
           </div>
 
           <div className="detail-box">
@@ -118,7 +114,7 @@ console.log(wedding);
       {wedding.youtubeLink && (
         <div className="mt-4">
           <a
-            href={wedding.youtubeLink}
+            href={wedding.youtube_link}
             target="_blank"
             rel="noreferrer"
             className="btn btn-danger"

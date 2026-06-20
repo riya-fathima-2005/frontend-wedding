@@ -52,46 +52,38 @@ const Howtohost = () => {
 
   const reader = new FileReader();
 
-  reader.onloadend = () => {
+reader.onloadend = () => {
 
-    const formData = {
-      role,
-      firstname,
-      lastname,
-      email,
-      phonenumber,
-      partnerFirstname,
-      partnerLastname,
-      partnerEmail,
-      partnerPhone,
-      youtubeLink,
-      profileImage: reader.result,
-    };
-
-const existingWeddings =
-  JSON.parse(localStorage.getItem("allWeddings")) || [];
-
-console.log("Before Save:", existingWeddings);
-
-existingWeddings.push(formData);
-
-console.log("After Save:", existingWeddings);
-
-localStorage.setItem(
-  "allWeddings",
-  JSON.stringify(existingWeddings)
-);
-
-console.log(
-  "Saved:",
-  localStorage.getItem("allWeddings")
-);
-
-navigate("/hostdetails");
+  const formData = {
+    role,
+    firstname,
+    lastname,
+    email,
+    phonenumber,
+    partnerFirstname,
+    partnerLastname,
+    partnerEmail,
+    partnerPhone,
+    youtubeLink,
+    profileImage: reader.result,
   };
 
-  reader.readAsDataURL(profileImage);
+  sessionStorage.setItem(
+    "hostStep1",
+    JSON.stringify(formData)
+  );
+
+  console.log(
+    "Step1 Saved:",
+    sessionStorage.getItem("hostStep1")
+  );
+
+  navigate("/hostdetails");
 };
+
+reader.readAsDataURL(profileImage);
+
+
 
   return (
     <div className="container host mt-5">

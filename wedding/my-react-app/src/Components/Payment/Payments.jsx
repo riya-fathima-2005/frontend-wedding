@@ -7,8 +7,10 @@ const Payment = () => {
   const navigate = useNavigate();
   const [booking, setBooking] = useState(null);
 
+  // get final wedding data
   useEffect(() => {
-    const data = localStorage.getItem("weddingDetails");
+    const data = sessionStorage.getItem("finalWedding");
+
     if (data) {
       setBooking(JSON.parse(data));
     }
@@ -18,6 +20,7 @@ const Payment = () => {
     if (!booking) return;
 
     try {
+      // create razorpay order
       const paymentResponse = await axios.post(
         "https://wedding-book.onrender.com/create-payment/",
         {
@@ -45,63 +48,107 @@ const Payment = () => {
                 venue_name: booking.venueName,
                 amount: booking.venuePrice,
                 razorpay_order_id: order.id,
-                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_payment_id:
+                  response.razorpay_payment_id,
               }
             );
 
-            const allWeddings =
-              JSON.parse(localStorage.getItem("allWeddings")) || [];
+            // get login token
+            const token =
+              localStorage.getItem("token");
 
-            const latestWedding =
-              allWeddings[allWeddings.length - 1];
-
-            const token = localStorage.getItem("token");
-
-            // save wedding
+            // save wedding in backend DB
             const weddingResponse = await axios.post(
               "https://wedding-book.onrender.com/api/weddings/",
               {
-                role: latestWedding.role,
-                firstname: latestWedding.firstname,
-                lastname: latestWedding.lastname,
-                partner_firstname: latestWedding.partnerFirstname,
-                partner_lastname: latestWedding.partnerLastname,
-                email: latestWedding.email,
-                phone: latestWedding.phone,
+                role: booking.role,
+                firstname: booking.firstname,
+                lastname: booking.lastname,
 
-                wedding_date: latestWedding.weddingDate,
-                wedding_time: latestWedding.weddingTime,
+                partner_firstname:
+                  booking.partnerFirstname,
 
-                food_type: latestWedding.foodType,
-                alcohol_served: latestWedding.alcoholServed,
-                language: latestWedding.language,
-                dress_code: latestWedding.dressCode,
-                description: latestWedding.description,
+                partner_lastname:
+                  booking.partnerLastname,
 
-                custom_venue: latestWedding.venueName,
-                venue_price: latestWedding.venuePrice,
+                email: booking.email,
+                phone: booking.phonenumber,
 
-                manager_phone: latestWedding.managerPhone,
-                latitude: latestWedding.latitude,
-                longitude: latestWedding.longitude,
+                youtube_link:
+                  booking.youtubeLink,
+
+                wedding_date:
+                  booking.weddingDate,
+
+                wedding_time:
+                  booking.weddingTime,
+
+                food_type:
+                  booking.foodType,
+
+                alcohol_served:
+                  booking.alcoholServed,
+
+                language:
+                  booking.language,
+
+                dress_code:
+                  booking.dressCode,
+
+                description:
+                  booking.description,
+
+                custom_venue:
+                  booking.venueName,
+
+                venue_price:
+                  booking.venuePrice,
+
+                manager_phone:
+                  booking.managerPhone,
+
+                latitude:
+                  booking.latitude,
+
+                longitude:
+                  booking.longitude,
 
                 payment_status: "Success",
               },
               {
                 headers: {
-                  Authorization: `Bearer ${token}`,
+                  Authorization:
+                    `Bearer ${token}`,
                 },
               }
             );
 
-            console.log("Wedding Saved:", weddingResponse.data);
+            console.log(
+              "Wedding Saved:",
+              weddingResponse.data
+            );
+
+            // clear temp data
+            sessionStorage.removeItem(
+              "hostStep1"
+            );
+
+            sessionStorage.removeItem(
+              "finalWedding"
+            );
 
             alert("Payment Successful!");
+
             navigate("/payment-success");
 
           } catch (error) {
-            console.log("BACKEND ERROR:", error.response?.data);   // IMPORTANT
+            console.log(
+              "BACKEND ERROR:",
+              error.response?.data
+            );
+
             console.error(error);
+
             alert("Wedding save failed");
           }
         },
@@ -111,12 +158,20 @@ const Payment = () => {
         },
       };
 
-      const razorpay = new window.Razorpay(options);
+      const razorpay =
+        new window.Razorpay(options);
+
       razorpay.open();
 
     } catch (error) {
-      console.error("Payment Error:", error);
-      alert("Failed to initiate payment");
+      console.error(
+        "Payment Error:",
+        error
+      );
+
+      alert(
+        "Failed to initiate payment"
+      );
     }
   };
 
@@ -127,53 +182,75 @@ const Payment = () => {
   return (
     <div className="payment-container">
       <div className="payment-card">
+
         <div className="payment-header">
           <h2>Payment Summary</h2>
-          <p>Review your wedding booking details</p>
+          <p>
+            Review your wedding booking details
+          </p>
         </div>
 
         <div className="detail-row">
           <span>Venue Name</span>
-          <strong>{booking.venueName || "Not Selected"}</strong>
+          <strong>
+            {booking.venueName ||
+              "Not Selected"}
+          </strong>
         </div>
 
         <div className="detail-row">
           <span>Wedding Date</span>
-          <strong>{booking.weddingDate}</strong>
+          <strong>
+            {booking.weddingDate}
+          </strong>
         </div>
 
         <div className="detail-row">
           <span>Wedding Time</span>
-          <strong>{booking.weddingTime}</strong>
+          <strong>
+            {booking.weddingTime}
+          </strong>
         </div>
 
         <div className="detail-row">
           <span>Food Type</span>
-          <strong>{booking.foodType}</strong>
+          <strong>
+            {booking.foodType}
+          </strong>
         </div>
 
         <div className="detail-row">
           <span>Language</span>
-          <strong>{booking.language}</strong>
+          <strong>
+            {booking.language}
+          </strong>
         </div>
 
         <div className="detail-row">
           <span>Dress Code</span>
-          <strong>{booking.dressCode}</strong>
+          <strong>
+            {booking.dressCode}
+          </strong>
         </div>
 
         <div className="amount-box">
           <span>Total Amount</span>
-          <h3>₹ {booking.venuePrice || 0}</h3>
+          <h3>
+            ₹ {booking.venuePrice || 0}
+          </h3>
         </div>
 
-        <button className="pay-btn" onClick={handlePayment}>
+        <button
+          className="pay-btn"
+          onClick={handlePayment}
+        >
           Proceed to Pay
         </button>
 
         <p className="secure-text">
           🔒 Secure Payment Powered by Razorpay
         </p>
+
       </div>
     </div>
   );

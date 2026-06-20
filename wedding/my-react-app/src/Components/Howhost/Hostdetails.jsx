@@ -160,29 +160,23 @@ const weddingData = {
 latitude,
 longitude,
 };
-
-const allWeddings =
-  JSON.parse(localStorage.getItem("allWeddings")) || [];
-
-if (allWeddings.length > 0) {
-  allWeddings[allWeddings.length - 1] = {
-    ...allWeddings[allWeddings.length - 1],
-    ...weddingData,
-  };
-
-  localStorage.setItem(
-    "allWeddings",
-    JSON.stringify(allWeddings)
-  );
-}
-
-localStorage.setItem(
-  "weddingDetails",
-  JSON.stringify(weddingData)
+const step1Data = JSON.parse(
+  sessionStorage.getItem("hostStep1")
 );
 
-console.log("Updated Wedding:",
-  allWeddings[allWeddings.length - 1]
+const finalWedding = {
+  ...step1Data,
+  ...weddingData,
+};
+
+sessionStorage.setItem(
+  "finalWedding",
+  JSON.stringify(finalWedding)
+);
+
+console.log(
+  "Final Wedding Data:",
+  finalWedding
 );
 
 navigate("/payment");

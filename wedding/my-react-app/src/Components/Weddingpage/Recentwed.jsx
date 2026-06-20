@@ -1,27 +1,48 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "../../assets/Style/Recently.css";
 
 const Recentwed = () => {
   const navigate = useNavigate();
 
-  // Date filter state
+  // Date filter
   const [selectedDate, setSelectedDate] = useState("");
 
-  // Get weddings from localStorage
-  const allWeddings =
-    JSON.parse(localStorage.getItem("allWeddings")) || [];
+  // Weddings state
+  const [allWeddings, setAllWeddings] = useState([]);
 
-  // Filter weddings by date
+  // Fetch all weddings from backend
+  useEffect(() => {
+    const fetchWeddings = async () => {
+      try {
+        const response = await axios.get(
+          "https://wedding-book.onrender.com/api/weddings/"
+        );
+
+        console.log("Fetched Weddings:", response.data);
+
+        setAllWeddings(response.data);
+      } catch (error) {
+        console.log("Fetch Error:", error);
+      }
+    };
+
+    fetchWeddings();
+  }, []);
+
+  // Filter by date
   const filteredWeddings = allWeddings.filter((wedding) => {
     if (!selectedDate) return true;
 
-    return wedding.weddingDate === selectedDate;
+    // backend field = wedding_date
+    return wedding.wedding_date === selectedDate;
   });
 
   return (
     <div>
       <div className="container mb-5">
+
         <h2 className="text-center recent mt-5">
           Choose a celebration, Live the culture
         </h2>
@@ -35,10 +56,13 @@ const Recentwed = () => {
 
         {/* Date Filter */}
         <div className="text-center mb-4">
+
           <input
             type="date"
             value={selectedDate}
-            onChange={(e) => setSelectedDate(e.target.value)}
+            onChange={(e) =>
+              setSelectedDate(e.target.value)
+            }
             className="form-control w-25 mx-auto"
           />
 
@@ -48,11 +72,15 @@ const Recentwed = () => {
           >
             Clear Filter
           </button>
+
         </div>
 
-        {/* User Weddings */}
+        {/* Wedding Cards */}
+
         {filteredWeddings.length > 0 ? (
+
           <div className="row justify-content-center">
+
             {filteredWeddings.map((wedding, index) => (
               <div
                 className="col-md-4 d-flex justify-content-center mb-4"
@@ -66,31 +94,40 @@ const Recentwed = () => {
                     })
                   }
                 >
+
                   <img
-                    src={wedding.profileImage}
+                    src={wedding.profile_image}
                     alt="Wedding"
                     className="card-img"
                   />
 
                   <div className="card-img-overlay d-flex flex-column justify-content-end text-center text-white">
+
                     <h5 className="card-title">
                       {wedding.firstname} &{" "}
-                      {wedding.partnerFirstname}
+                      {wedding.partner_firstname}
                     </h5>
 
                     <p className="card-text">
                       Wedding Profile
                     </p>
+
                   </div>
+
                 </div>
               </div>
             ))}
+
           </div>
+
         ) : (
+
           <h5 className="text-center mt-4">
             No weddings found for selected date
           </h5>
+
         )}
+
       </div>
     </div>
   );
