@@ -31,7 +31,9 @@ const Howtohost = () => {
     }
   };
 
-  const handleNext = (e) => {
+ 
+
+const handleNext = (e) => {
   e.preventDefault();
 
   if (
@@ -52,36 +54,35 @@ const Howtohost = () => {
 
   const reader = new FileReader();
 
-reader.onloadend = () => {
+  reader.onloadend = () => {
+    const formData = {
+      role,
+      firstname,
+      lastname,
+      email,
+      phonenumber,
+      partnerFirstname,
+      partnerLastname,
+      partnerEmail,
+      partnerPhone,
+      youtubeLink,
+      profileImage: reader.result,
+    };
 
-  const formData = {
-    role,
-    firstname,
-    lastname,
-    email,
-    phonenumber,
-    partnerFirstname,
-    partnerLastname,
-    partnerEmail,
-    partnerPhone,
-    youtubeLink,
-    profileImage: reader.result,
+    sessionStorage.setItem(
+      "hostStep1",
+      JSON.stringify(formData)
+    );
+
+    console.log(
+      "Step1 Saved:",
+      sessionStorage.getItem("hostStep1")
+    );
+
+    navigate("/hostdetails");
   };
 
-  sessionStorage.setItem(
-    "hostStep1",
-    JSON.stringify(formData)
-  );
-
-  console.log(
-    "Step1 Saved:",
-    sessionStorage.getItem("hostStep1")
-  );
-
-  navigate("/hostdetails");
-};
-
-reader.readAsDataURL(profileImage);
+  reader.readAsDataURL(profileImage);
 };
 
 
