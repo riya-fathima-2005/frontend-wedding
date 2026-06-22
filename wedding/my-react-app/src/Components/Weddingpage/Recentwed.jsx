@@ -95,9 +95,14 @@ const Recentwed = () => {
                   }
                 >
 
-                <img
-  src="https://images.unsplash.com/photo-1519741497674-611481863552?w=400"
-  alt="Wedding"
+              <img
+  src="https://via.placeholder.com/400x500"
+  alt="test"
+  style={{
+    width: "100%",
+    height: "450px",
+    objectFit: "cover"
+  }}
 />
 
                   <div className="card-img-overlay d-flex flex-column justify-content-end text-center text-white">
