@@ -15,18 +15,18 @@ const Recentwed = () => {
   // Fetch all weddings from backend
   useEffect(() => {
     const fetchWeddings = async () => {
-      try {
-        const response = await axios.get(
-          "https://wedding-book.onrender.com/api/weddings/"
-        );
+  try {
+    const response = await axios.get(
+      "https://wedding-book.onrender.com/api/weddings/"
+    );
 
-        console.log("Fetched Weddings:", response.data);
+    console.log("Fetched Weddings:", response.data);   // <-- ivide add cheyyanam
 
-        setAllWeddings(response.data);
-      } catch (error) {
-        console.log("Fetch Error:", error);
-      }
-    };
+    setAllWeddings(response.data);
+  } catch (error) {
+    console.log("Fetch Error:", error);
+  }
+};
 
     fetchWeddings();
   }, []);
@@ -95,16 +95,15 @@ const Recentwed = () => {
                   }
                 >
 
-     <div>
   <img
-    src="https://via.placeholder.com/400x500"
-    alt="test"
-    style={{
-      width: "300px",
-      height: "300px"
-    }}
-  />
-</div>
+  src={wedding.image}
+  alt="Wedding"
+  style={{
+    width: "100%",
+    height: "450px",
+    objectFit: "cover"
+  }}
+/>
 
                   <div className="card-img-overlay d-flex flex-column justify-content-end text-center text-white">
 

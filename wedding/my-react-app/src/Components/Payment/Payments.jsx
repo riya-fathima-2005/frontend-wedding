@@ -7,11 +7,11 @@ const Payment = () => {
   const navigate = useNavigate();
   const [booking, setBooking] = useState(null);
 
-  // Load wedding data
   useEffect(() => {
     const data = sessionStorage.getItem("finalWedding");
 
     console.log("PAYMENT PAGE DATA:", data);
+    
 
     if (data) {
       setBooking(JSON.parse(data));
@@ -22,7 +22,6 @@ const Payment = () => {
     if (!booking) return;
 
     try {
-      // Create Razorpay order
       const paymentResponse = await axios.post(
         "https://wedding-book.onrender.com/create-payment/",
         {
@@ -55,67 +54,143 @@ const Payment = () => {
               }
             );
 
-            // Step 1 data
             const latestWedding = JSON.parse(
               sessionStorage.getItem("hostStep1")
             );
 
-            console.log("STEP1 DATA:", latestWedding);
-
             const token = localStorage.getItem("token");
 
-            console.log("TOKEN:", token);
-            console.log("BOOKING:", booking);
+            // FORM DATA
+            const weddingPayload = new FormData();
 
-            // Wedding payload
-            const weddingPayload = {
-              role: latestWedding.role,
-              firstname: latestWedding.firstname,
-              lastname: latestWedding.lastname,
-
-              partner_firstname:
-                latestWedding.partnerFirstname,
-
-              partner_lastname:
-                latestWedding.partnerLastname,
-
-              email: latestWedding.email,
-              phone: latestWedding.phonenumber,
-
-              wedding_date: booking.weddingDate,
-              wedding_time: booking.weddingTime,
-
-              food_type: booking.foodType,
-              alcohol_served:
-                booking.alcoholServed,
-
-              language: booking.language,
-              dress_code: booking.dressCode,
-              description: booking.description,
-
-              custom_venue: booking.venueName,
-              venue_price: booking.venuePrice,
-
-              manager_phone:
-                booking.managerPhone,
-
-             latitude: booking.latitude
-  ? parseFloat(booking.latitude)
-  : null,
-
-longitude: booking.longitude
-  ? parseFloat(booking.longitude)
-  : null,
-
-              payment_status: "Success",
-            };
-
-            console.log(
-              "SENDING TO DJANGO:",
-              weddingPayload
+            weddingPayload.append(
+              "role",
+              latestWedding.role
             );
 
-            // Save wedding to backend
+            weddingPayload.append(
+              "firstname",
+              latestWedding.firstname
+            );
+
+            weddingPayload.append(
+              "lastname",
+              latestWedding.lastname
+            );
+
+            weddingPayload.append(
+              "partner_firstname",
+              latestWedding.partnerFirstname
+            );
+
+            weddingPayload.append(
+              "partner_lastname",
+              latestWedding.partnerLastname
+            );
+
+            weddingPayload.append(
+              "email",
+              latestWedding.email
+            );
+
+            weddingPayload.append(
+              "phone",
+              latestWedding.phonenumber
+            );
+
+            weddingPayload.append(
+              "wedding_date",
+              booking.weddingDate
+            );
+
+            weddingPayload.append(
+              "wedding_time",
+              booking.weddingTime
+            );
+
+            weddingPayload.append(
+              "food_type",
+              booking.foodType
+            );
+
+            weddingPayload.append(
+              "alcohol_served",
+              booking.alcoholServed
+            );
+
+            weddingPayload.append(
+              "language",
+              booking.language
+            );
+
+            weddingPayload.append(
+              "dress_code",
+              booking.dressCode
+            );
+
+            weddingPayload.append(
+              "description",
+              booking.description
+            );
+
+            weddingPayload.append(
+              "custom_venue",
+              booking.venueName
+            );
+
+            weddingPayload.append(
+              "venue_price",
+              booking.venuePrice
+            );
+
+            weddingPayload.append(
+              "manager_phone",
+              booking.managerPhone
+            );
+
+            weddingPayload.append(
+              "latitude",
+              booking.latitude || ""
+            );
+
+            weddingPayload.append(
+              "longitude",
+              booking.longitude || ""
+            );
+
+            weddingPayload.append(
+              "payment_status",
+              "Success"
+            );
+
+            // IMAGE
+          // IMAGE
+ if (window.selectedProfileImage) {
+   weddingPayload.append(
+     "profile_image",
+     window.selectedProfileImage
+   );
+ }
+
+ // DEBUG CHECK
+ console.log(
+   "IMAGE CHECK:",
+   window.selectedProfileImage
+ );
+
+ console.log("FORM DATA CONTENT:");
+
+ for (let pair of weddingPayload.entries()) {
+   console.log(
+     pair[0],
+     pair[1]
+   );
+ }
+
+ console.log(
+   "Sending to Django..."
+ );
+
             const weddingResponse =
               await axios.post(
                 "https://wedding-book.onrender.com/api/weddings/",
@@ -123,12 +198,14 @@ longitude: booking.longitude
                 {
                   headers: {
                     Authorization: `Bearer ${token}`,
+                    "Content-Type":
+                      "multipart/form-data",
                   },
                 }
               );
 
             console.log(
-              "WEDDING SAVED SUCCESS:",
+              "SUCCESS:",
               weddingResponse.data
             );
 
@@ -137,22 +214,11 @@ longitude: booking.longitude
 
           } catch (error) {
             console.log(
-              "BACKEND ERROR DATA:",
               error.response?.data
             );
 
-            console.log(
-              "BACKEND ERROR STATUS:",
-              error.response?.status
-            );
-
-            console.error(
-              "FULL ERROR:",
-              error
-            );
-
             alert(
-              "Wedding save failed. Check console."
+              "Wedding save failed"
             );
           }
         },
@@ -168,10 +234,7 @@ longitude: booking.longitude
       razorpay.open();
 
     } catch (error) {
-      console.error(
-        "PAYMENT ERROR:",
-        error
-      );
+      console.error(error);
 
       alert(
         "Failed to initiate payment"

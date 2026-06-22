@@ -52,37 +52,29 @@ const handleNext = (e) => {
     return;
   }
 
-  const reader = new FileReader();
+const formData = {
+  role,
+  firstname,
+  lastname,
+  email,
+  phonenumber,
+  partnerFirstname,
+  partnerLastname,
+  partnerEmail,
+  partnerPhone,
+  youtubeLink,
+};
 
-  reader.onloadend = () => {
-    const formData = {
-      role,
-      firstname,
-      lastname,
-      email,
-      phonenumber,
-      partnerFirstname,
-      partnerLastname,
-      partnerEmail,
-      partnerPhone,
-      youtubeLink,
-      profileImage: reader.result,
-    };
+sessionStorage.setItem(
+  "hostStep1",
+  JSON.stringify(formData)
+);
 
-    sessionStorage.setItem(
-      "hostStep1",
-      JSON.stringify(formData)
-    );
+window.selectedProfileImage = profileImage;
+// image separate store cheyyaruth
+navigate("/hostdetails");
+  
 
-    console.log(
-      "Step1 Saved:",
-      sessionStorage.getItem("hostStep1")
-    );
-
-    navigate("/hostdetails");
-  };
-
-  reader.readAsDataURL(profileImage);
 };
 
 
