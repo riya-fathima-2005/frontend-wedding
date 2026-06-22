@@ -96,10 +96,14 @@ const Recentwed = () => {
                 >
 
                   <img
-                    src={wedding.profile_image}
-                    alt="Wedding"
-                    className="card-img"
-                  />
+  src={
+    wedding.profile_image
+      ? wedding.profile_image
+      : "https://via.placeholder.com/400x500"
+  }
+  alt="Wedding"
+  className="card-img"
+/>
 
                   <div className="card-img-overlay d-flex flex-column justify-content-end text-center text-white">
 
