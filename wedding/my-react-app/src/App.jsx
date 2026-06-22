@@ -21,6 +21,7 @@ import Christians from "./Components/Celebrations/Celebrations";
 import Contacted from "./Components/Contacting/Contacted";
 import Howtohost from "./Components/Howhost/Howtohost";
 import Hostdetails from "./Components/Howhost/Hostdetails";
+import VenueNearby from "./Components/Venue/VenueNearby";
 
 // AUTH
 import Login from "./Components/Login/Login";
@@ -71,6 +72,7 @@ function App() {
         <Route path="/about" element={<Aboutpage />} />
 
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/venue" element={<VenueNearby />} />
 
         {/* <Route
           path="/costumes"

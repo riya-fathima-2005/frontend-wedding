@@ -1,3 +1,142 @@
+
+.venue-layout{
+  display:flex;
+  gap:30px;
+  margin-top:40px;
+  align-items:flex-start;
+}
+
+/* LEFT SIDE */
+.venue-left{
+  width:60%;
+}
+
+/* RIGHT SIDE */
+.venue-right{
+  width:40%;
+  display:flex;
+  flex-direction:column;
+}
+
+/* 2 cards per row */
+.venue-grid-two{
+  display:grid;
+  grid-template-columns: repeat(2,1fr);
+  gap:20px;
+}
+
+/* button */
+.near-btn{
+  width:100%;
+  padding:14px;
+  border:none;
+  background:#7d1f35;
+  color:white;
+  border-radius:10px;
+  margin-bottom:20px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+/* map container */
+.map-box{
+  width:100%;
+  height:100%;              /* important */
+  min-height:1300px;       /* cards height pole */
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* image */
+.dummy-map{
+  width:100%;
+  height:100%;             /* important */
+  object-fit:cover;
+  display:block;
+}
+
+
+/* cards */
+.venue-card{
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 5px 20px rgba(0,0,0,0.08);
+  transition:0.3s;
+  background:white;
+}
+
+.venue-card:hover{
+  transform:translateY(-5px);
+}
+
+.venue-image-wrapper{
+  width:100%;
+  height:220px;
+  overflow:hidden;
+}
+
+.venue-image{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+
+.venue-content{
+  padding:18px;
+}
+
+.venue-title{
+  font-size:24px;
+  font-weight:700;
+  margin-bottom:10px;
+}
+
+.venue-location{
+  color:#c89b6d;
+  margin-bottom:10px;
+}
+
+.venue-price{
+  font-size:18px;
+  font-weight:700;
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
+.view-btn{
+  width:100%;
+  border:none;
+  padding:12px;
+  border-radius:30px;
+  background:linear-gradient(135deg,#2d2d2d,#000);
+  color:white;
+  font-weight:600;
+}
+
+
+/* mobile */
+@media(max-width:768px){
+
+  .venue-layout{
+    flex-direction:column;
+  }
+
+  .venue-left,
+  .venue-right{
+    width:100%;
+  }
+
+  .venue-grid-two{
+    grid-template-columns:1fr;
+  }
+
+  .map-box{
+    min-height:500px;
+  }
+}
+
+
 .venue-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -15,36 +154,6 @@
 
 
 
-
-.venue-card:hover {
-  transform: translateY(-5px);
-}
-
-
-.venue-card {
-
-  border-radius: 15px;
-  overflow: hidden;
-
-  box-shadow:
-    0 5px 20px rgba(0,0,0,0.08);
-
-  transition: 0.3s;
-}
-
-.venue-image-wrapper {
-  width: 100%;
-  height: 220px;
-
-  overflow: hidden;
-}
-
-.venue-image {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-}
-
 .venue-main-title {
   text-align: center;
   margin-top: 90px;
@@ -58,28 +167,8 @@
   font-size: 18px;
 }
 
-.venue-price {
-  font-size: 18px;
-  font-weight: 700;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  color: #000;
-}
 
-.venue-content {
-  padding: 18px;
-}
 
-.venue-title {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.venue-location {
-  color: #c89b6d;
-  margin-bottom: 10px;
-}
 
 .couple-name {
   font-size: 15px;
@@ -105,16 +194,6 @@
   color: #dc3545;
 }
 
-.view-btn {
-  width: 100%;
-  border: none;
-  padding: 12px;
-  border-radius: 30px;
-  background: linear-gradient(135deg,#2d2d2d,#000);
-  color: white;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
 
 @media (max-width: 991px) {
   .venue-grid {
