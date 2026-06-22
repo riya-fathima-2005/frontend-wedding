@@ -95,15 +95,16 @@ const Recentwed = () => {
                   }
                 >
 
-              <img
-  src="https://via.placeholder.com/400x500"
-  alt="test"
-  style={{
-    width: "100%",
-    height: "450px",
-    objectFit: "cover"
-  }}
-/>
+     <div>
+  <img
+    src="https://via.placeholder.com/400x500"
+    alt="test"
+    style={{
+      width: "300px",
+      height: "300px"
+    }}
+  />
+</div>
 
                   <div className="card-img-overlay d-flex flex-column justify-content-end text-center text-white">
 
