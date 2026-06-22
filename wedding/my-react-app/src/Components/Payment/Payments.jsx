@@ -7,8 +7,12 @@ const Payment = () => {
   const navigate = useNavigate();
   const [booking, setBooking] = useState(null);
 
+  // Load wedding data
   useEffect(() => {
-    const data = localStorage.getItem("weddingDetails");
+    const data = sessionStorage.getItem("finalWedding");
+
+    console.log("PAYMENT PAGE DATA:", data);
+
     if (data) {
       setBooking(JSON.parse(data));
     }
@@ -51,74 +55,105 @@ const Payment = () => {
               }
             );
 
-            // Step 1 data from sessionStorage
+            // Step 1 data
             const latestWedding = JSON.parse(
               sessionStorage.getItem("hostStep1")
             );
 
-            console.log("Step1 Data:", latestWedding);
+            console.log("STEP1 DATA:", latestWedding);
 
-            const token =
-              localStorage.getItem("token");
+            const token = localStorage.getItem("token");
 
-            // Save wedding to backend
-            const weddingResponse = await axios.post(
-              "https://wedding-book.onrender.com/api/weddings/",
-              {
-                // Step 1 data
-                role: latestWedding.role,
-                firstname: latestWedding.firstname,
-                lastname: latestWedding.lastname,
-                partner_firstname:
-                  latestWedding.partnerFirstname,
-                partner_lastname:
-                  latestWedding.partnerLastname,
-                email: latestWedding.email,
-                phone: latestWedding.phonenumber,
+            console.log("TOKEN:", token);
+            console.log("BOOKING:", booking);
 
-                // Step 2 data
-                wedding_date: booking.weddingDate,
-                wedding_time: booking.weddingTime,
+            // Wedding payload
+            const weddingPayload = {
+              role: latestWedding.role,
+              firstname: latestWedding.firstname,
+              lastname: latestWedding.lastname,
 
-                food_type: booking.foodType,
-                alcohol_served:
-                  booking.alcoholServed,
-                language: booking.language,
-                dress_code: booking.dressCode,
-                description: booking.description,
+              partner_firstname:
+                latestWedding.partnerFirstname,
 
-                custom_venue: booking.venueName,
-                venue_price: booking.venuePrice,
+              partner_lastname:
+                latestWedding.partnerLastname,
 
-                manager_phone:
-                  booking.managerPhone,
+              email: latestWedding.email,
+              phone: latestWedding.phonenumber,
 
-                latitude: booking.latitude,
-                longitude: booking.longitude,
+              wedding_date: booking.weddingDate,
+              wedding_time: booking.weddingTime,
 
-                payment_status: "Success",
-              },
-              {
-                headers: {
-                  Authorization: `Bearer ${token}`,
-                },
-              }
-            );
+              food_type: booking.foodType,
+              alcohol_served:
+                booking.alcoholServed,
+
+              language: booking.language,
+              dress_code: booking.dressCode,
+              description: booking.description,
+
+              custom_venue: booking.venueName,
+              venue_price: booking.venuePrice,
+
+              manager_phone:
+                booking.managerPhone,
+
+             latitude: booking.latitude
+  ? parseFloat(booking.latitude)
+  : null,
+
+longitude: booking.longitude
+  ? parseFloat(booking.longitude)
+  : null,
+
+              payment_status: "Success",
+            };
 
             console.log(
-              "Wedding Saved:",
+              "SENDING TO DJANGO:",
+              weddingPayload
+            );
+
+            // Save wedding to backend
+            const weddingResponse =
+              await axios.post(
+                "https://wedding-book.onrender.com/api/weddings/",
+                weddingPayload,
+                {
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                  },
+                }
+              );
+
+            console.log(
+              "WEDDING SAVED SUCCESS:",
               weddingResponse.data
             );
 
             alert("Payment Successful!");
             navigate("/payment-success");
+
           } catch (error) {
             console.log(
-              "BACKEND ERROR:",
+              "BACKEND ERROR DATA:",
               error.response?.data
             );
-            console.error(error);
-            alert("Wedding save failed");
+
+            console.log(
+              "BACKEND ERROR STATUS:",
+              error.response?.status
+            );
+
+            console.error(
+              "FULL ERROR:",
+              error
+            );
+
+            alert(
+              "Wedding save failed. Check console."
+            );
           }
         },
 
@@ -131,9 +166,16 @@ const Payment = () => {
         new window.Razorpay(options);
 
       razorpay.open();
+
     } catch (error) {
-      console.error("Payment Error:", error);
-      alert("Failed to initiate payment");
+      console.error(
+        "PAYMENT ERROR:",
+        error
+      );
+
+      alert(
+        "Failed to initiate payment"
+      );
     }
   };
 
@@ -147,44 +189,59 @@ const Payment = () => {
 
         <div className="payment-header">
           <h2>Payment Summary</h2>
-          <p>Review your wedding booking details</p>
+          <p>
+            Review your wedding booking details
+          </p>
         </div>
 
         <div className="detail-row">
           <span>Venue Name</span>
           <strong>
-            {booking.venueName || "Not Selected"}
+            {booking.venueName ||
+              "Not Selected"}
           </strong>
         </div>
 
         <div className="detail-row">
           <span>Wedding Date</span>
-          <strong>{booking.weddingDate}</strong>
+          <strong>
+            {booking.weddingDate}
+          </strong>
         </div>
 
         <div className="detail-row">
           <span>Wedding Time</span>
-          <strong>{booking.weddingTime}</strong>
+          <strong>
+            {booking.weddingTime}
+          </strong>
         </div>
 
         <div className="detail-row">
           <span>Food Type</span>
-          <strong>{booking.foodType}</strong>
+          <strong>
+            {booking.foodType}
+          </strong>
         </div>
 
         <div className="detail-row">
           <span>Language</span>
-          <strong>{booking.language}</strong>
+          <strong>
+            {booking.language}
+          </strong>
         </div>
 
         <div className="detail-row">
           <span>Dress Code</span>
-          <strong>{booking.dressCode}</strong>
+          <strong>
+            {booking.dressCode}
+          </strong>
         </div>
 
         <div className="amount-box">
           <span>Total Amount</span>
-          <h3>₹ {booking.venuePrice || 0}</h3>
+          <h3>
+            ₹ {booking.venuePrice || 0}
+          </h3>
         </div>
 
         <button
