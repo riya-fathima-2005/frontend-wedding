@@ -6,6 +6,8 @@ import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
 
+
+// Fix marker issue (especially Vercel deployment)
 delete L.Icon.Default.prototype._getIconUrl;
 
 L.Icon.Default.mergeOptions({
@@ -14,27 +16,40 @@ L.Icon.Default.mergeOptions({
   shadowUrl: markerShadow,
 });
 
+
 function VenueMap({ venues, userLocation }) {
 
+  // If location permission not given
   if (!userLocation) return null;
 
   return (
     <MapContainer
-      center={[userLocation.lat, userLocation.lng]}
-      zoom={10}
-      style={{ height: "500px", width: "100%" }}
+      center={[22.9734, 78.6569]}   // India center
+      zoom={5}                      // Full India view
+      style={{
+        height: "500px",
+        width: "100%"
+      }}
     >
 
+      {/* Map tiles */}
       <TileLayer
         url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
-      {/* User location */}
-      <Marker position={[userLocation.lat, userLocation.lng]}>
-        <Popup>You are here</Popup>
+      {/* Current user location */}
+      <Marker
+        position={[
+          userLocation.lat,
+          userLocation.lng
+        ]}
+      >
+        <Popup>
+          You are here 📍
+        </Popup>
       </Marker>
 
-      {/* Venue markers */}
+      {/* All venue locations */}
       {venues.map((venue) => (
         <Marker
           key={venue.id}
@@ -45,8 +60,6 @@ function VenueMap({ venues, userLocation }) {
         >
           <Popup>
             {venue.venue_name}
-            <br />
-            {venue.location}
           </Popup>
         </Marker>
       ))}
