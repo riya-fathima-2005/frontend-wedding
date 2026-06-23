@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import emailjs from "@emailjs/browser";
+
 import "../../assets/Style/Ourcontact.css";
 
 function Ourcontact() {
@@ -20,39 +20,39 @@ function Ourcontact() {
   };
 
   // HANDLE SUBMIT
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  try {
+    const response = await fetch(
+      "https://wedding-book.onrender.com/api/contact/",
+      {
+        method: "POST",
 
-  emailjs.send(
-  "service_abcd123",
-  "template_xyz456",
-  {
-    fullname: formData.fullname,
-    email: formData.email,
-    phone: formData.phone,
-    message: formData.message,
-  },
-  "AbCdEF12345"
-)
+        headers: {
+          "Content-Type": "application/json",
+        },
 
-      .then(() => {
-        alert("Message Sent Successfully!");
+        body: JSON.stringify(formData),
+      }
+    );
 
-        setFormData({
-          fullname: "",
-          email: "",
-          phone: "",
-          message: "",
-        });
-      })
+    const data = await response.json();
 
-      .catch((error) => {
-        console.log(error);
+    alert(data.message);
 
-        alert("Failed to Send Message");
-      });
-  };
+    setFormData({
+      fullname: "",
+      email: "",
+      phone: "",
+      message: "",
+    });
+
+  } catch (error) {
+    console.log(error);
+    alert("Failed to Send Message");
+  }
+};
 
   return (
     <section className="contact-page">
