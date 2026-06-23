@@ -5,6 +5,7 @@ import L from "leaflet";
 import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
+import personMarker from "../../assets/person-marker.png";
 
 
 // Fix marker issue (especially Vercel deployment)
@@ -14,6 +15,12 @@ L.Icon.Default.mergeOptions({
   iconRetinaUrl: markerIcon2x,
   iconUrl: markerIcon,
   shadowUrl: markerShadow,
+});
+const userIcon = new L.Icon({
+  iconUrl: personMarker,
+  iconSize: [35, 35],      // size adjust ചെയ്യാം
+  iconAnchor: [17, 35],
+  popupAnchor: [0, -30],
 });
 
 
@@ -39,11 +46,9 @@ function VenueMap({ venues, userLocation }) {
 
       {/* Current user location */}
       <Marker
-        position={[
-          userLocation.lat,
-          userLocation.lng
-        ]}
-      >
+  position={[userLocation.lat, userLocation.lng]}
+  icon={userIcon}
+>
         <Popup>
           You are here 📍
         </Popup>
