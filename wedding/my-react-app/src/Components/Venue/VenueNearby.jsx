@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import mapimg from "../../assets/Images/map.png";
+import VenueMap from "./VenueMap";
 
 
 import "../../assets/Style/Venuedata.css";
@@ -12,6 +13,8 @@ function VenueNearby() {
 
   const [venues, setVenues] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [mapVenues, setMapVenues] = useState([]);
+const [userLocation, setUserLocation] = useState(null);
 
   useEffect(() => {
     const fetchVenues = async () => {
@@ -43,6 +46,31 @@ function VenueNearby() {
 
     fetchVenues();
   }, [navigate]);
+  const showNearestVenues = async () => {
+  navigator.geolocation.getCurrentPosition(
+    async (position) => {
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
+
+      setUserLocation({
+        lat: lat,
+        lng: lng
+      });
+
+      const response = await fetch(
+        `${API_URL}/api/venue-map/`
+      );
+
+      const data = await response.json();
+
+      setMapVenues(data);
+    },
+
+    () => {
+      alert("Location permission denied");
+    }
+  );
+};
 
   return (
     <section className="venues-section">
@@ -117,17 +145,33 @@ function VenueNearby() {
             {/* RIGHT SIDE */}
            <div className="venue-right">
 
-  <button className="near-btn bg-dark">
-    View Nearest Venues
-  </button>
+ <button
+  className="near-btn bg-dark"
+  onClick={showNearestVenues}
+>
+  View Nearest Venues
+</button>
 
-  <div className="map-box">
-    <img style={{height:"1200px"}}
+ <div className="map-box">
+
+  {mapVenues.length > 0 ? (
+
+    <VenueMap
+      venues={mapVenues}
+      userLocation={userLocation}
+    />
+
+  ) : (
+
+    <img
       src={mapimg}
       alt="Map"
       className="dummy-map"
     />
-  </div>
+
+  )}
+
+</div>
 
 </div>
 
