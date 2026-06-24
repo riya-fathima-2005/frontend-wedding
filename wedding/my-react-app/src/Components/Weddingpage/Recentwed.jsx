@@ -6,27 +6,24 @@ import "../../assets/Style/Recently.css";
 const Recentwed = () => {
   const navigate = useNavigate();
 
-  // Date filter
   const [selectedDate, setSelectedDate] = useState("");
-
-  // Weddings state
   const [allWeddings, setAllWeddings] = useState([]);
 
-  // Fetch all weddings from backend
+  // Fetch weddings
   useEffect(() => {
     const fetchWeddings = async () => {
-  try {
-    const response = await axios.get(
-      "https://wedding-book.onrender.com/api/weddings/"
-    );
+      try {
+        const response = await axios.get(
+          "https://wedding-book.onrender.com/api/weddings/"
+        );
 
-    console.log("Fetched Weddings:", response.data);   // <-- ivide add cheyyanam
+        console.log("Fetched Weddings:", response.data);
 
-    setAllWeddings(response.data);
-  } catch (error) {
-    console.log("Fetch Error:", error);
-  }
-};
+        setAllWeddings(response.data);
+      } catch (error) {
+        console.log("Fetch Error:", error);
+      }
+    };
 
     fetchWeddings();
   }, []);
@@ -34,8 +31,6 @@ const Recentwed = () => {
   // Filter by date
   const filteredWeddings = allWeddings.filter((wedding) => {
     if (!selectedDate) return true;
-
-    // backend field = wedding_date
     return wedding.wedding_date === selectedDate;
   });
 
@@ -56,13 +51,10 @@ const Recentwed = () => {
 
         {/* Date Filter */}
         <div className="text-center mb-4">
-
           <input
             type="date"
             value={selectedDate}
-            onChange={(e) =>
-              setSelectedDate(e.target.value)
-            }
+            onChange={(e) => setSelectedDate(e.target.value)}
             className="form-control w-25 mx-auto"
           />
 
@@ -72,19 +64,16 @@ const Recentwed = () => {
           >
             Clear Filter
           </button>
-
         </div>
 
         {/* Wedding Cards */}
-
         {filteredWeddings.length > 0 ? (
-
           <div className="row justify-content-center">
 
-            {filteredWeddings.map((wedding, index) => (
+            {filteredWeddings.map((wedding) => (
               <div
                 className="col-md-4 d-flex justify-content-center mb-4"
-                key={index}
+                key={wedding.id}
               >
                 <div
                   className="card card-overlay text-center border-0 card-service no-focus-border"
@@ -95,21 +84,32 @@ const Recentwed = () => {
                   }
                 >
 
-  <img
-  src={wedding.image}
-  alt="Wedding"
-  style={{
-    width: "100%",
-    height: "450px",
-    objectFit: "cover"
-  }}
-/>
+                  {wedding.profile_image ? (
+                    <img
+                      src={wedding.profile_image}
+                      alt="Wedding"
+                      style={{
+                        width: "100%",
+                        height: "450px",
+                        objectFit: "cover",
+                      }}
+                    />
+                  ) : (
+                    <img
+                      src="https://picsum.photos/400/500"
+                      alt="No Image"
+                      style={{
+                        width: "100%",
+                        height: "450px",
+                        objectFit: "cover",
+                      }}
+                    />
+                  )}
 
                   <div className="card-img-overlay d-flex flex-column justify-content-end text-center text-white">
 
                     <h5 className="card-title">
-                      {wedding.firstname} &{" "}
-                      {wedding.partner_firstname}
+                      {wedding.firstname} & {wedding.partner_firstname}
                     </h5>
 
                     <p className="card-text">
@@ -117,19 +117,15 @@ const Recentwed = () => {
                     </p>
 
                   </div>
-
                 </div>
               </div>
             ))}
 
           </div>
-
         ) : (
-
           <h5 className="text-center mt-4">
             No weddings found for selected date
           </h5>
-
         )}
 
       </div>

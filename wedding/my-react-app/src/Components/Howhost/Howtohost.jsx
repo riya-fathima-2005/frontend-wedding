@@ -31,64 +31,72 @@ const Howtohost = () => {
     }
   };
 
- 
+  const handleNext = (e) => {
+    e.preventDefault();
 
-const handleNext = (e) => {
-  e.preventDefault();
+    // Required validation
+    if (
+      !role ||
+      !firstname ||
+      !lastname ||
+      !email ||
+      !phonenumber ||
+      !partnerFirstname ||
+      !partnerLastname ||
+      !partnerEmail ||
+      !partnerPhone ||
+      !profileImage
+    ) {
+      alert("⚠️ Please complete all required fields.");
+      return;
+    }
 
-  if (
-    !role ||
-    !firstname ||
-    !lastname ||
-    !email ||
-    !phonenumber ||
-    !partnerFirstname ||
-    !partnerLastname ||
-    !partnerEmail ||
-    !partnerPhone ||
-    !profileImage
-  ) {
-    alert("⚠️ Please complete all required fields.");
-    return;
-  }
+    // Same email validation
+    if (email === partnerEmail) {
+      alert("Bride and Groom email cannot be the same.");
+      return;
+    }
 
-const formData = {
-  role,
-  firstname,
-  lastname,
-  email,
-  phonenumber,
-  partnerFirstname,
-  partnerLastname,
-  partnerEmail,
-  partnerPhone,
-  youtubeLink,
-};
+    // Same phone validation
+    if (phonenumber === partnerPhone) {
+      alert("Bride and Groom phone number cannot be the same.");
+      return;
+    }
 
-sessionStorage.setItem(
-  "hostStep1",
-  JSON.stringify(formData)
-);
+    const formData = {
+      role,
+      firstname,
+      lastname,
+      email,
+      phonenumber,
+      partnerFirstname,
+      partnerLastname,
+      partnerEmail,
+      partnerPhone,
+      youtubeLink,
+    };
 
-window.selectedProfileImage = profileImage;
-// image separate store cheyyaruth
-navigate("/hostdetails");
-  
+    sessionStorage.setItem(
+      "hostStep1",
+      JSON.stringify(formData)
+    );
 
-};
+    // store image temporarily
+    window.selectedProfileImage = profileImage;
 
+    navigate("/hostdetails");
+  };
 
   return (
     <div className="container host mt-5">
       <form onSubmit={handleNext}>
+        
         {/* Heading */}
-
         <h4 className="headtex">
           Hi, let's get you ready to become a host
         </h4>
 
         {/* About You */}
-
         <h3>Step 1: About You</h3>
 
         <div className="mb-4">
@@ -108,7 +116,6 @@ navigate("/hostdetails");
         </div>
 
         {/* Your Details */}
-
         <h3>Your Contact Details</h3>
 
         <div className="row">
@@ -158,7 +165,6 @@ navigate("/hostdetails");
         </div>
 
         {/* Partner Details */}
-
         {role && (
           <>
             <h3>{getPartnerLabel()} Details</h3>
@@ -220,7 +226,6 @@ navigate("/hostdetails");
         )}
 
         {/* Profile Information */}
-
         <h3>Profile Information</h3>
 
         <div className="row">
@@ -258,7 +263,6 @@ navigate("/hostdetails");
         </div>
 
         {/* Footer */}
-
         <p className="mt-4 text-center">
           We promise not to spam you. We will only
           contact you regarding hosting guests.
