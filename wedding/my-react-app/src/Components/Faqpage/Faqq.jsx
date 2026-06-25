@@ -49,7 +49,7 @@ const Faqq = () => {
     
             <div className="banner-content">
               <h2 style={{marginTop:"200px"}}>FAQ</h2>
-              <p style={{marginTop:"120px", marginLeft:"405px", fontSize:"35px", fontFamily:"Cormorant Garamond, serif"}}>HOME / FAQ</p>
+              <p style={{ fontSize:"35px", fontFamily:"Cormorant Garamond, serif"}}>HOME / FAQ</p>
             </div>
           </div>
         </div>

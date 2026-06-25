@@ -67,7 +67,7 @@ const handleSubmit = async (e) => {
       
               <div className="banner-content">
                 <h2 style={{marginTop:"200px"}}>CONTACT</h2>
-                <p style={{marginTop:"120px", marginLeft:"255px", fontSize:"35px", fontFamily:"Cormorant Garamond, serif"}}>HOME / CONTACT</p>
+                <p style={{ fontSize:"35px", fontFamily:"Cormorant Garamond, serif"}}>HOME / CONTACT</p>
               </div>
             </div>
           </div>
