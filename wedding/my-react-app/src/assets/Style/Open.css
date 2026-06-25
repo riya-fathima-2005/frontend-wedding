@@ -1,33 +1,157 @@
-.host-banner {
-  height: 75vh; /* banner height */
-  background-size: cover;
-  background-position: center top; /* image top position */
-  background-repeat: no-repeat;
-  position: relative;
-  padding-top: 40px; /* top gap */
-}
-
-.join-overlay {
-  height: 55vh;
+.banner-wrapper {
+  width: 100%;
   display: flex;
-  align-items: center;
+  justify-content: center;
+  padding-top: 60px;   /* navbar ninn gap */
+  padding-bottom: 30px;
 }
 
-.join-content {
-  background: rgba(255, 255, 255, 0.85);
-  padding: 40px;
-  max-width: 520px;
-  border-radius: 8px;
-  margin-top: 120px;
-}
+  .banner-box {
+    position: relative;
+    width: 90%;
+    height: 380px;
+    border-radius: 25px;
+    overflow: hidden;
+    margin-top: 40px;
+  }
 
-.join-content h2 {
-  line-height: 1.4;
-  font-family: "Poppins", sans-serif;
-  color: rgb(10, 8, 8);
-}
+  .decore-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-.buttons {
-  font-size: 14px;
-  font-family: "Poppins", sans-serif;
-}
+  .banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+  }
+
+  /* small form/card */
+  .content-card {
+    position: absolute;
+    top: 50%;
+    left: 8%;
+    transform: translateY(-50%);
+    width: 420px;
+    background: rgba(255, 255, 255, 0.15);   /* glass effect */
+    backdrop-filter: blur(8px);
+    padding: 35px;
+    border-radius: 20px;
+    text-align: left;
+  }
+
+  /* heading */
+  .banner-title {
+    font-size: 42px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 20px;
+  }
+
+  /* text */
+  .banner-text {
+    font-size: 22px;
+    line-height: 1.5;
+    color: white;
+    margin-bottom: 30px;
+  }
+
+  /* button */
+  .faq-button {
+    display: inline-block;
+    background: black;
+    color: white;
+    padding: 14px 26px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: 0.3s;
+  }
+
+  .faq-button:hover {
+    background: #222;
+    color: white;
+  }
+  /* ===== Content inside banner ===== */
+  .banner-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    text-align: center;
+    color: white;
+  }
+
+  /* ===== Main Heading ===== */
+  .main-title {
+    font-size: 65px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+    font-family: "Poppins", sans-serif;
+  }
+
+
+
+  /* ===== Button ===== */
+  .register-btn {
+    display: inline-block;
+    padding: 16px 38px;
+    background: black;
+    color: white;
+    border-radius: 35px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 30px;   /* keep button well inside banner */
+    transition: 0.3s ease;
+  }
+
+  .register-btn:hover {
+    background: #222;
+    color: white;
+  }
+
+
+  /* ===== REMOVE OLD WHITE BOX EFFECT ===== */
+
+  /* old classes kept but neutralized */
+  .join-overlay {
+    display: none;
+  }
+
+  .join-content {
+    display: none;
+  }
+
+  .join-content h2 {
+    display: none;
+  }
+
+  .buttons {
+    display: none;
+  }
+
+
+  /* ===== Responsive ===== */
+  @media (max-width: 768px) {
+    .banner-box {
+      height: 420px;
+    }
+
+    .main-title {
+      font-size: 38px;
+    }
+
+    .banner-text {
+      font-size: 18px;
+      margin-bottom: 35px;
+    }
+
+    .register-btn {
+      padding: 12px 28px;
+      font-size: 15px;
+    }
+  }

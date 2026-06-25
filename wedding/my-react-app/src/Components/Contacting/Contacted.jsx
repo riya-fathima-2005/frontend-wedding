@@ -7,7 +7,6 @@ import Ourcontact from './Ourcontact'
 const Contacted = () => {
   return (
     <div>
-      <Contactingg/>
       <Ourcontact/>
     </div>
   )

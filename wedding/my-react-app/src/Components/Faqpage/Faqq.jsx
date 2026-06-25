@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../../assets/Style/Faqq.css";
-import wed7 from "../../assets/Images/ban4.png";
+import wed7 from "../../assets/Images/banimgjpj.jpeg";
 
 const faqData = [
   {
@@ -40,16 +40,20 @@ const Faqq = () => {
   return (
     <div>
 
-      {/* HERO BANNER */}
-      <div className="imagesec">
-        <img src={wed7} alt="decor" className="decore-img" />
-
-        <div className="banner-overlay"></div>
-
-        <h2 className="overlay-text">
-          FAQ
-        </h2>
-      </div>
+        {/* New Banner First */}
+        <div className="banner-wrapper">
+          <div className="banner-box">
+            <img src={wed7} alt="decor" className="decore-img" />
+    
+            <div className="banner-overlay"></div>
+    
+            <div className="banner-content">
+              <h2 style={{marginTop:"200px"}}>FAQ</h2>
+              <p style={{marginTop:"120px", marginLeft:"405px", fontSize:"35px", fontFamily:"Cormorant Garamond, serif"}}>HOME / FAQ</p>
+            </div>
+          </div>
+        </div>
+    
 
       {/* FAQ SECTION */}
       <div className="faq-container">

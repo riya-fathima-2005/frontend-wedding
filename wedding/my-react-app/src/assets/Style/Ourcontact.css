@@ -8,6 +8,8 @@
   overflow: hidden;
   margin-left: 100px;
   margin-right: 100px;
+  width: 1360px;
+  margin-left: 77px;
 }
 
 /* ====================================
@@ -16,8 +18,11 @@
 
 .contact-hero {
   padding: 140px 0 220px;
+  margin-top: 90px;
   text-align: center;
   position: relative;
+  
+  border-radius: 30px;
   background:
     linear-gradient(
       to right,

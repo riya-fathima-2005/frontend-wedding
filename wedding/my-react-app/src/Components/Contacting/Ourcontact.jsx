@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import "../../assets/Style/Ourcontact.css";
+import wed7 from "../../assets/Images/banimgjpj.jpeg"
 
 function Ourcontact() {
   const [formData, setFormData] = useState({
@@ -55,9 +56,24 @@ const handleSubmit = async (e) => {
 };
 
   return (
-    <section className="contact-page">
-      {/* TOP AREA */}
+    <section>
 
+          {/* New Banner First */}
+          <div className="banner-wrapper">
+            <div className="banner-box">
+              <img src={wed7} alt="decor" className="decore-img" />
+      
+              <div className="banner-overlay"></div>
+      
+              <div className="banner-content">
+                <h2 style={{marginTop:"200px"}}>CONTACT</h2>
+                <p style={{marginTop:"120px", marginLeft:"255px", fontSize:"35px", fontFamily:"Cormorant Garamond, serif"}}>HOME / CONTACT</p>
+              </div>
+            </div>
+          </div>
+      
+      {/* TOP AREA */}
+<div  className="contact-page">
       <div className="contact-hero">
         <div className="container">
           <p className="hero-mini-title">WEDDING CONTACT</p>
@@ -244,6 +260,7 @@ const handleSubmit = async (e) => {
             </button>
           </form>
         </div>
+      </div>
       </div>
     </section>
   );

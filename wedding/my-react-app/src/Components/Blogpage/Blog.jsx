@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import blogpic from "../../assets/Images/freepik1.jpeg";
 import blogpic1 from "../../assets/Images/freepik2.jpeg";
-import wed7 from "../../assets/Images/ban5.png";
+import wed7 from "../../assets/Images/banimgjpj.jpeg";
 
 import "../../assets/Style/Blog.css";
 
@@ -11,14 +11,20 @@ const Blog = () => {
   return (
     <>
       {/* BANNER */}
-      <div className="imagesec">
-        <img src={wed7} alt="decor" className="decore-img" />
-
-        <h2 className="overlay-text text-white">
-          Blog
-        </h2>
-      </div>
-
+         {/* New Banner First */}
+         <div className="banner-wrapper">
+           <div className="banner-box">
+             <img src={wed7} alt="decor" className="decore-img" />
+     
+             <div className="banner-overlay"></div>
+     
+             <div className="banner-content">
+               <h2 style={{marginTop:"200px"}}>BLOG</h2>
+               <h2 style={{marginTop:"180px", marginLeft:"105px", fontSize:"35px", fontFamily:"Cormorant Garamond, serif"}}>HOME / BLOG</h2>
+             </div>
+           </div>
+         </div>
+     
       {/* BLOG SECTION */}
       <div className="blog-section">
         <div className="container">

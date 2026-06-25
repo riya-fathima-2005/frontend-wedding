@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../assets/Style/Howtohost.css";
+import wed7 from "../../assets/Images/banimgjpj.jpeg"
 
 const Howtohost = () => {
   const navigate = useNavigate();
@@ -88,7 +89,23 @@ const Howtohost = () => {
   };
 
   return (
-    <div className="container host mt-5">
+    <div >
+
+      {/* New Banner First */}
+                <div className="banner-wrapper">
+                  <div className="banner-box">
+                    <img src={wed7} alt="decor" className="decore-img" />
+            
+                    <div className="banner-overlay"></div>
+            
+                    <div className="banner-content">
+                      <h2 style={{marginTop:"200px"}}>CONTACT</h2>
+                      <p style={{marginTop:"120px", marginLeft:"235px", fontSize:"35px", fontFamily:"Cormorant Garamond, serif"}}>HOME / HOST</p>
+                    </div>
+                  </div>
+                </div>
+
+ <div className="container host mt-5">
       <form onSubmit={handleNext}>
         
         {/* Heading */}
@@ -277,6 +294,7 @@ const Howtohost = () => {
           </button>
         </div>
       </form>
+      </div>
     </div>
   );
 };

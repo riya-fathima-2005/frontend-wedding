@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import mapimg from "../../assets/Images/map.png";
+import wed7 from "../../assets/Images/banimgjpj.jpeg";
 import VenueMap from "./VenueMap";
-
-
 import "../../assets/Style/Venuedata.css";
-import wed7 from "../../assets/Images/ban4.png";
 
 function VenueNearby() {
   const navigate = useNavigate();
@@ -72,115 +69,98 @@ const [userLocation, setUserLocation] = useState(null);
   );
 };
 
-  return (
-    <section className="venues-section">
+return (
+  <section className="venues-section">
 
-      <div className="container">
+    {/* New Banner First */}
+    <div className="banner-wrapper">
+      <div className="banner-box">
+        <img src={wed7} alt="decor" className="decore-img" />
 
-        <h2 className="venue-main-title">
-          Find Nearby Wedding Venues
-        </h2>
+        <div className="banner-overlay"></div>
 
-        {loading ? (
-          <p>Loading...</p>
-        ) : (
+        <div className="banner-content">
+          <h2 style={{marginTop:"200px"}}>VENUE</h2>
+          <p style={{marginTop:"120px", marginLeft:"305px", fontSize:"35px", fontFamily:"Cormorant Garamond, serif"}}>HOME / VENUE</p>
+        </div>
+      </div>
+    </div>
 
-          <div className="venue-layout">
+    {/* Rest of your existing content */}
+    <div className="container">
 
-            {/* LEFT SIDE */}
-            <div className="venue-left">
+      <h2 className="venue-main-title">
+        Find Your Wedding Venue
+      </h2>
 
-              <div className="venue-grid-two">
+      <p className="venue-description">
+        Discover beautiful wedding venues tailored to your style and celebration.
+      </p>
 
-                {venues.map((venue) => (
-                  <div
-                    className="venue-card"
-                    key={venue.id}
-                  >
-                    <div className="venue-image-wrapper">
-                      <img
-                        src={
-                          venue.image
-                            ? venue.image.startsWith("http")
-                              ? venue.image
-                              : `${API_URL}${venue.image}`
-                            : wed7
-                        }
-                        alt={venue.name}
-                        className="venue-image"
-                      />
-                    </div>
+      {loading ? (
+        <p className="loading-text">Loading venues...</p>
+      ) : venues.length === 0 ? (
+        <p className="loading-text">No venues found.</p>
+      ) : (
 
-                    <div className="venue-content">
+        <div className="venue-grid">
+          {venues.map((venue) => (
+            <div className="venue-card" key={venue.id}>
 
-                      <h4 className="venue-title">
-                        {venue.name}
-                      </h4>
+              <div className="venue-image-wrapper">
+                <img
+                  src={
+                    venue.image
+                      ? venue.image.startsWith("http")
+                        ? venue.image
+                        : `${API_URL}${venue.image}`
+                      : wed7
+                  }
+                  alt={venue.name}
+                  className="venue-image"
+                />
+              </div>
 
-                      <p className="venue-location">
-                        📍 {venue.location}
-                      </p>
+              <div className="venue-content">
+                <h4 className="venue-title">{venue.name}</h4>
 
-                      <div className="venue-price">
-                        ₹ {venue.price}
-                      </div>
+                <p className="venue-location">
+                  📍 {venue.location}
+                </p>
 
-                      <Link
-                        to={`/morevenue/${venue.id}`}
-                      >
-                        <button className="view-btn">
-                          View Venue
-                        </button>
-                      </Link>
+                <div className="couple-name">
+                  💍 {venue.bride_name} & {venue.groom_name}
+                </div>
 
-                    </div>
-                  </div>
-                ))}
+                <div className="venue-price">
+                  ₹ {venue.price}
+                </div>
 
+                <div
+                  className={
+                    venue.status === "Available"
+                      ? "status available"
+                      : "status booked"
+                  }
+                >
+                  {venue.status}
+                </div>
+
+                <Link to={`/morevenue/${venue.id}`}>
+                  <button className="view-btn">
+                    View Venue
+                  </button>
+                </Link>
               </div>
 
             </div>
+          ))}
+        </div>
 
-
-            {/* RIGHT SIDE */}
-           <div className="venue-right">
-
- <button
-  className="near-btn bg-dark"
-  onClick={showNearestVenues}
->
-  View Nearest Venues
-</button>
-
- <div className="map-box">
-
-  {mapVenues.length > 0 ? (
-
-    <VenueMap
-      venues={mapVenues}
-      userLocation={userLocation}
-    />
-
-  ) : (
-
-    <img
-      src={mapimg}
-      alt="Map"
-      className="dummy-map"
-    />
-
-  )}
-
-</div>
-
-</div>
-
-          </div>
-        )}
-
-      </div>
-    </section>
-  );
+      )}
+    </div>
+  </section>
+);
 }
 
 export default VenueNearby;

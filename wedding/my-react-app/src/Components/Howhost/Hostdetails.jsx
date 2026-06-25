@@ -1,7 +1,7 @@
   import React, { useState, useEffect } from "react";
   import { useNavigate } from "react-router-dom";
   import "../../assets/Style/Hostdetails.css";
-  import wed7 from "../../assets/Images/ban4.png";
+  import wed7 from "../../assets/Images/banimgjpj.jpeg";
 
   const API_URL = "https://wedding-book.onrender.com"
 
@@ -186,15 +186,20 @@
 
     return (
       <div>
-        <div className="imagesec">
-                <img src={wed7} alt="decor" className="decore-img" />
         
-                <div className="banner-overlay"></div>
-        
-                <h2 className="overlay-text">
-                  WEDDING DETAILS
-                </h2>
-              </div>
+              {/* New Banner First */}
+                        <div className="banner-wrapper">
+                          <div className="banner-box">
+                            <img src={wed7} alt="decor" className="decore-img" />
+                    
+                            <div className="banner-overlay"></div>
+                    
+                            <div className="banner-content">
+                              <h2 style={{marginTop:"200px"}}>CONTACT</h2>
+                              <p style={{marginTop:"120px", marginLeft:"235px", fontSize:"35px", fontFamily:"Cormorant Garamond, serif"}}>HOME / HOST DETAILS</p>
+                            </div>
+                          </div>
+                        </div>
 
       
       <div className="host-details-container">

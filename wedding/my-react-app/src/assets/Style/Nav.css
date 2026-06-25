@@ -6,7 +6,7 @@
   top: 55px;
   right: 0;
   width: 250px;
-  background: #fff;
+  background: #0d0d0d;
   color: #000;
   padding: 20px;
   border-radius: 12px;
@@ -37,7 +37,7 @@
 ========================= */
 
 .navbar-transparent {
-  background: rgba(0, 0, 0, 0.35) !important;
+  background: black !important;
   backdrop-filter: blur(8px);
   box-shadow: none !important;
 }
@@ -73,11 +73,13 @@
 .navbar-nav .nav-link {
   color: white !important;
   font-size: 15px;
+  margin-top: -15px;
   font-weight: 700;
   letter-spacing: 0.6px;
   padding: 8px 10px;
   position: relative;
   transition: all 0.3s ease;
+
 }
 
 /* HOVER */
@@ -194,11 +196,13 @@
 
   .navbar-nav {
     gap: 18px;
+    
   }
 
   .navbar-nav .nav-link {
     color: white !important;
     font-size: 16px;
+   
   }
 
   .navbar-nav .nav-link::after {
