@@ -26,8 +26,24 @@ const Technical = () => {
     setOpenIndex(openIndex === index ? null : index);
   };
   return (
-    <div className="faq-container">
-      <h2 className="faq-title text-center">TECHNICAL TROUBLESHOOTING</h2>
+  <section className="faq-section">
+
+    {/* LEFT SIDE */}
+
+    <div className="faq-left">
+      <h2 className="faq-main-heading">
+        TECHNICAL <br /> TROUBLESHOOTING
+      </h2>
+
+      <div className="faq-subtext">
+        Find answers to common technical issues, platform errors,
+        booking problems and troubleshooting guidance.
+      </div>
+    </div>
+
+    {/* RIGHT SIDE */}
+
+    <div className="faq-right">
       <div className="faq-list">
         {faqData.map((item, index) => (
           <div
@@ -37,17 +53,27 @@ const Technical = () => {
           >
             <div className="faq-question">
               {item.question}
-              <span className={`arrow ${openIndex === index ? "open" : ""}`}>
-                &#9660;
+
+              <span className="plus-icon">
+                {openIndex === index ? "−" : "+"}
               </span>
             </div>
 
-            <div className="faq-answer">{item.answer}</div>
+            {/* show answer only on click */}
+
+            {openIndex === index && (
+              <div className="faq-answer">
+                {item.answer}
+              </div>
+            )}
+
           </div>
         ))}
       </div>
     </div>
-  );
+
+  </section>
+);
 };
 
 export default Technical;

@@ -30,8 +30,24 @@ const Aboutind = () => {
     setOpenIndex(openIndex === index ? null : index);
   };
   return (
-    <div className="faq-container">
-      <h2 className="faq-title text-center">ABOUT INDIAN WEDDINGS</h2>
+  <section className="faq-section">
+
+    {/* LEFT SIDE */}
+
+    <div className="faq-left">
+      <h2 className="faq-main-heading">
+        ABOUT INDIAN <br /> WEDDINGS
+      </h2>
+
+      <div className="faq-subtext">
+        Learn more about Indian wedding traditions, celebrations,
+        customs and the cultural experience guests can enjoy.
+      </div>
+    </div>
+
+    {/* RIGHT SIDE */}
+
+    <div className="faq-right">
       <div className="faq-list">
         {faqData.map((item, index) => (
           <div
@@ -41,17 +57,27 @@ const Aboutind = () => {
           >
             <div className="faq-question">
               {item.question}
-              <span className={`arrow ${openIndex === index ? "open" : ""}`}>
-                &#9660;
+
+              <span className="plus-icon">
+                {openIndex === index ? "−" : "+"}
               </span>
             </div>
 
-            <div className="faq-answer">{item.answer}</div>
+            {/* Show only when clicked */}
+
+            {openIndex === index && (
+              <div className="faq-answer">
+                {item.answer}
+              </div>
+            )}
+
           </div>
         ))}
       </div>
     </div>
-  );
+
+  </section>
+);
 };
 
 export default Aboutind;

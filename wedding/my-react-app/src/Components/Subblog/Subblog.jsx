@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import freepik1 from "../../assets/Images/freepik1.jpeg";
 import "../../assets/Style/Subblog.css";
-import wed8 from "../../assets/Images/ban3.png";
+import wed7 from "../../assets/Images/banimgjpj.jpeg";
 
 const Subblog = () => {
 
@@ -14,25 +14,18 @@ const Subblog = () => {
           FULL WIDTH BANNER
       =================================== */}
 
-      <div className="imge-contain">
-
-        <img
-          src={wed8}
-          alt="wed8"
-          className="wed8-img"
-        />
-
-        {/* OVERLAY TEXT */}
-
-        <div className="banner-content">
-
-          <h1 className="banner-heading">
-            Blog
-          </h1>
-
-        </div>
-
-      </div>
+             <div className="banner-wrapper bannerblog">
+                        <div className="banner-box">
+                          <img src={wed7} alt="decor" className="decore-img" />
+                  
+                          <div className="banner-overlay"></div>
+                  
+                          <div className="banner-content">
+                            
+                             <h2 style={{ marginLeft:"-720px", fontSize:"35px", fontFamily:"Cormorant Garamond, serif", color:"white"}}>HOME / BLOG</h2>
+                          </div>
+                        </div>
+                      </div>
 
       {/* ===================================
           PAGE CONTENT
@@ -254,14 +247,10 @@ const Subblog = () => {
 
         <div className="text-center py-3">
 
-          <Link
-            to="/blog"
-            className="faq-button text-decoration-none"
-          >
+           <Link to="/blog" className="luxury-back-btn">
+      Back to Posts
+    </Link>
 
-            Back to Posts
-
-          </Link>
 
         </div>
 

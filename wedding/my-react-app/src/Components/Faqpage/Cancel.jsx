@@ -21,29 +21,53 @@ const Cancel = () => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  return (
-    <div className="faq-container">
-      <h2 className="faq-title text-center">CANCELLATION</h2>
+ return (
+  <section className="faq-section">
+
+    {/* LEFT SIDE HEADING */}
+
+    <div className="faq-left">
+      <h2 className="faq-main-heading">
+        CANCELLATION
+      </h2>
+
+      <div className="faq-subtext">
+        Learn about our cancellation policy, refund process, 
+        and what happens if plans change before the wedding day.
+      </div>
+    </div>
+
+    {/* RIGHT SIDE FAQ */}
+
+    <div className="faq-right">
       <div className="faq-list">
         {faqData.map((item, index) => (
           <div
             key={index}
             className={`faq-item ${openIndex === index ? "open" : ""}`}
-            onClick={() => toggleIndex(index)}>
-                
+            onClick={() => toggleIndex(index)}
+          >
             <div className="faq-question">
               {item.question}
-              <span className={`arrow ${openIndex === index ? "open" : ""}`}>
-                &#9660;
+
+              <span className="plus-icon">
+                {openIndex === index ? "−" : "+"}
               </span>
             </div>
 
-            <div className="faq-answer">{item.answer}</div>
+            {openIndex === index && (
+              <div className="faq-answer">
+                {item.answer}
+              </div>
+            )}
+
           </div>
         ))}
       </div>
     </div>
-  );
+
+  </section>
+);
 };
 
 export default Cancel;

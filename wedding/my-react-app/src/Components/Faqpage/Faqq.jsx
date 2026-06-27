@@ -56,45 +56,65 @@ const Faqq = () => {
     
 
       {/* FAQ SECTION */}
-      <div className="faq-container">
+      <section className="faq-section">
 
-        <h2 className="faq-title text-center">
-          ABOUT PURE WEDDING
-        </h2>
+  {/* LEFT SIDE */}
 
-        <div className="faq-list">
+  <div className="faq-left">
 
-          {faqData.map((item, index) => (
+    <h2 className="faq-main-heading">
+      ABOUT PURE <br /> WEDDING
+    </h2>
 
-            <div
-              key={index}
-              className={`faq-item ${openIndex === index ? "open" : ""}`}
-              onClick={() => toggleIndex(index)}
-            >
+    <div className="faq-subtext">
+      Discover the beauty of pure wedding traditions, meaningful ceremonies, 
+      cultural values, and the unforgettable experiences that make every 
+      celebration truly special.
+    </div>
 
-              <div className="faq-question">
+  </div>
 
-                {item.question}
+  {/* RIGHT SIDE */}
 
-                <span
-                  className={`arrow ${openIndex === index ? "open" : ""}`}
-                >
-                  &#9660;
-                </span>
+  <div className="faq-right">
 
-              </div>
+    <div className="faq-list">
 
-              <div className="faq-answer">
-                {item.answer}
-              </div>
+      {faqData.map((item, index) => (
 
+        <div
+          key={index}
+          className={`faq-item ${openIndex === index ? "open" : ""}`}
+          onClick={() => toggleIndex(index)}
+        >
+
+          <div className="faq-question">
+
+            {item.question}
+
+            <span className="plus-icon">
+              {openIndex === index ? "−" : "+"}
+            </span>
+
+          </div>
+
+          {/* show answer only when clicked */}
+
+          {openIndex === index && (
+            <div className="faq-answer">
+              {item.answer}
             </div>
-
-          ))}
+          )}
 
         </div>
 
-      </div>
+      ))}
+
+    </div>
+
+  </div>
+
+</section>
 
     </div>
   );

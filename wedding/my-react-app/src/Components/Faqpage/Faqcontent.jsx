@@ -12,7 +12,7 @@ const Faqcontent = () => {
     <div>
       <Faqq />
       <Aboutind/>
-      <Contribution/>
+      {/* <Contribution/> */}
       <Before/>
       <Cancel/>
       <Technical/>

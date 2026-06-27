@@ -20,9 +20,25 @@ const Before = () => {
       };
 
   return (
-    
-    <div className="faq-container">
-      <h2 className="faq-title text-center">BEFORE THE WEDDING / PREPARATION</h2>
+  <section className="faq-section">
+
+    {/* LEFT SIDE */}
+
+    <div className="faq-left">
+      <h2 className="faq-main-heading">
+        BEFORE THE <br /> WEDDING
+      </h2>
+
+      <div className="faq-subtext">
+        Prepare everything before attending the wedding. 
+        Here are answers to common questions about planning, 
+        travel arrangements, dress code, and important preparations.
+      </div>
+    </div>
+
+    {/* RIGHT SIDE */}
+
+    <div className="faq-right">
       <div className="faq-list">
         {faqData.map((item, index) => (
           <div
@@ -32,17 +48,27 @@ const Before = () => {
           >
             <div className="faq-question">
               {item.question}
-              <span className={`arrow ${openIndex === index ? "open" : ""}`}>
-                &#9660;
+
+              <span className="plus-icon">
+                {openIndex === index ? "−" : "+"}
               </span>
             </div>
 
-            <div className="faq-answer">{item.answer}</div>
+            {/* answer only on click */}
+
+            {openIndex === index && (
+              <div className="faq-answer">
+                {item.answer}
+              </div>
+            )}
+
           </div>
         ))}
       </div>
     </div>
-  )
+
+  </section>
+);
 }
 
 export default Before

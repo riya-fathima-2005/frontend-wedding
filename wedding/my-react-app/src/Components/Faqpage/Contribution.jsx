@@ -59,9 +59,26 @@ const Contribution = () => {
   const toggleIndex = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
-  return (
-    <div className="faq-container">
-      <h2 className="faq-title text-center"> INTERNATIONAL GUEST GUIDE</h2>
+ return (
+  <section className="faq-section">
+
+    {/* LEFT SIDE */}
+
+    <div className="faq-left">
+      <h2 className="faq-main-heading1">
+        INTERNATIONAL <br /> GUEST GUIDE
+      </h2>
+
+      <div className="faq-subtext">
+        Helpful information for international guests attending Indian weddings. 
+        Learn about travel tips, cultural customs, accommodation, local etiquette, 
+        and everything you need for a comfortable experience.
+      </div>
+    </div>
+
+    {/* RIGHT SIDE */}
+
+    <div className="faq-right">
       <div className="faq-list">
         {faqData.map((item, index) => (
           <div
@@ -71,17 +88,27 @@ const Contribution = () => {
           >
             <div className="faq-question">
               {item.question}
-              <span className={`arrow ${openIndex === index ? "open" : ""}`}>
-                &#9660;
+
+              <span className="plus-icon">
+                {openIndex === index ? "−" : "+"}
               </span>
             </div>
 
-            <div className="faq-answer">{item.answer}</div>
+            {/* show only when clicked */}
+
+            {openIndex === index && (
+              <div className="faq-answer">
+                {item.answer}
+              </div>
+            )}
+
           </div>
         ))}
       </div>
     </div>
-  );
+
+  </section>
+);
 };
 
 export default Contribution;

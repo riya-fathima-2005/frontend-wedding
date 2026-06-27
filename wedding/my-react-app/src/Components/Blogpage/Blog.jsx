@@ -19,86 +19,95 @@ const Blog = () => {
              <div className="banner-overlay"></div>
      
              <div className="banner-content">
-               <h2 style={{marginTop:"200px"}}>BLOG</h2>
-               <h2 style={{marginTop:"180px", marginLeft:"105px", fontSize:"35px", fontFamily:"Cormorant Garamond, serif"}}>HOME / BLOG</h2>
+               
+                <h2 style={{ marginLeft:"-720px", fontSize:"35px", fontFamily:"Cormorant Garamond, serif", color:"white"}}>HOME / BLOG</h2>
              </div>
            </div>
          </div>
      
       {/* BLOG SECTION */}
-      <div className="blog-section">
-        <div className="container">
-          <div className="row g-4">
+     <div className="luxury-blog-section">
+  <div className="container">
 
-            {/* FIRST CARD */}
-            <div className="col-lg-6 col-md-6">
-              <div className="blog-card">
-                <img
-                  src={blogpic}
-                  alt="Indian wedding cuisine"
-                  className="img-fluid"
-                />
+    <div className="blog-heading-area text-center">
+      <p className="blog-subtitle">OUR JOURNAL</p>
+      <h2 className="blog-main-heading">
+        Stories & Wedding Traditions
+      </h2>
+    </div>
 
-                <h3 className="text-center bloghead">
-                  Culinary Traditions of Indian Weddings
-                </h3>
+    <div className="row gy-5">
 
-                <p className="blogpara">
-                  Attending an Indian wedding is nothing short of a sensory
-                  explosion—vibrant colors, joyful music, intricate rituals,
-                  and unforgettable culinary experiences. Indian weddings are
-                  celebrations filled with culture, emotion, and flavors.
-                </p>
+      {/* BLOG 1 */}
 
-              
+      <div className="col-lg-6">
+        <div className="luxury-blog-card">
 
-                <div className="text-center py-3">
-                  <Link
-                    to="/blogs"
-                    className="faq-button text-decoration-none"
-                  >
-                    Read More
-                  </Link>
-                </div>
-              </div>
+          <div className="blog-image-wrapper">
+            <img src={blogpic} alt="blog" />
+          </div>
+
+          <div className="blog-content">
+
+            <span className="blog-category">
+              Wedding Culture
+            </span>
+
+            <h3>
+              Culinary Traditions of Indian Weddings
+            </h3>
+
+            <div>
+              Attending an Indian wedding is a sensory experience filled with vibrant colors,
+              rituals, music and unforgettable flavors deeply rooted in tradition.
             </div>
 
-            {/* SECOND CARD */}
-            <div className="col-lg-6 col-md-6">
-              <div className="blog-card">
-                <img
-                  src={blogpic1}
-                  alt="Saat Phere ritual"
-                  className="img-fluid"
-                />
-
-                <h3 className="text-center bloghead">
-                  Seven Promises, One Sacred Bond
-                </h3>
-
-                <p className="blogpara">
-                  Indian weddings are vibrant celebrations filled with color,
-                  music, and rituals that hold deep spiritual meaning. Among
-                  the most profound traditions is the saat phere, symbolizing
-                  lifelong commitment and sacred bonding.
-                </p>
-
-                
-
-                <div className="text-center py-3">
-                  <Link
-                    to="/blogss"
-                    className="faq-button text-decoration-none"
-                  >
-                    Read More
-                  </Link>
-                </div>
-              </div>
-            </div>
+            <Link to="/blogs" className="luxury-btn">
+              Read Article
+            </Link>
 
           </div>
+
         </div>
       </div>
+
+
+      {/* BLOG 2 */}
+
+      <div className="col-lg-6">
+        <div className="luxury-blog-card">
+
+          <div className="blog-image-wrapper">
+            <img src={blogpic1} alt="blog" />
+          </div>
+
+          <div className="blog-content">
+
+            <span className="blog-category">
+              Sacred Rituals
+            </span>
+
+            <h3>
+              Seven Promises, One Sacred Bond
+            </h3>
+
+            <div>
+              Discover the spiritual significance behind the sacred saat phere ritual,
+              symbolizing lifelong commitment and eternal companionship.
+            </div>
+
+            <Link to="/blogss" className="luxury-btn">
+              Read Article
+            </Link>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
     </>
   );
 };
