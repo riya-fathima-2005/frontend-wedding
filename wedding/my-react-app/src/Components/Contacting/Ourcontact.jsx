@@ -66,8 +66,7 @@ const handleSubmit = async (e) => {
               <div className="banner-overlay"></div>
       
               <div className="banner-content">
-                <h2 style={{marginTop:"200px"}}>CONTACT</h2>
-                <p style={{marginTop:"120px", marginLeft:"255px", fontSize:"35px", fontFamily:"Cormorant Garamond, serif"}}>HOME / CONTACT</p>
+                <h2>CONTACT</h2>
               </div>
             </div>
           </div>
@@ -254,9 +253,9 @@ const handleSubmit = async (e) => {
 
             {/* BUTTON */}
 
-            <button type="submit" className="send-btn">
-              Send Message
-              <i className="bi bi-send-fill"></i>
+            <button type="submit" className=" view-btn">
+              Send Message 
+               <span> <i className="bi bi-send-fill"></i></span>
             </button>
           </form>
         </div>

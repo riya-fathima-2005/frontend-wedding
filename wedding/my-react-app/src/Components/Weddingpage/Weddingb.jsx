@@ -11,8 +11,7 @@ const Weddingb = () => {
         <div className="banner-overlay"></div>
 
         <div className="banner-content">
-          <h2 style={{marginTop:"200px"}}>Wedding</h2>
-          <p style={{marginTop:"120px", marginLeft:"250px", fontSize:"35px", fontFamily:"Cormorant Garamond, serif"}}>HOME / WEDDING</p>
+          <h2>Wedding</h2>
         </div>
       </div>
     </div>

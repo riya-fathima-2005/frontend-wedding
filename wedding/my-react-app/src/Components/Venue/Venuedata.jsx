@@ -131,7 +131,8 @@ function Venuedata({ showBanner = true }) {
                     to={`/morevenue/${venue.id}`}
                     className="venue-link"
                   >
-                    <button className="view-btn">
+                    
+                    <button className="view-btn btn-outline-dark">
                       View Venue
                     </button>
                   </Link>

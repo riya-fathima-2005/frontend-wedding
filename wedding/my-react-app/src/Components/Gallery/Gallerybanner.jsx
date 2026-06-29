@@ -13,8 +13,7 @@ const Gallerybanner = () => {
                     <div className="banner-overlay"></div>
             
                     <div className="banner-content">
-                      <h2 style={{marginTop:"200px"}}>CONTACT</h2>
-                      <p style={{marginTop:"120px", marginLeft:"200px", fontSize:"35px", fontFamily:"Cormorant Garamond, serif"}}>HOME / GALLERY</p>
+                      <h2 style={{color:"white"}}>GALLERY</h2>
                     </div>
                   </div>
                 </div>

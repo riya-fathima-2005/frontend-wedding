@@ -84,6 +84,7 @@
 
 .venue-content{
   padding:18px;
+  margin-left: 20px;
 }
 
 .venue-title{
@@ -95,6 +96,7 @@
 .venue-location{
   color:#c89b6d;
   margin-bottom:10px;
+  
 }
 
 .venue-price{
@@ -102,16 +104,23 @@
   font-weight:700;
   margin-top:10px;
   margin-bottom:10px;
+  
 }
 
 .view-btn{
   width:100%;
-  border:none;
   padding:12px;
   border-radius:30px;
-  background:linear-gradient(135deg,#2d2d2d,#000);
-  color:white;
+  background-color: black;
+  color:rgb(253, 250, 250);
   font-weight:600;
+    transition: all 0.3s ease;
+}
+.view-btn:hover{
+  border: 2px solid black;
+  color: black;
+  background-color: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8);
 }
 
 
@@ -174,6 +183,7 @@
   font-size: 15px;
   margin-bottom: 10px;
   color: #555;
+ 
 }
 
 .status {

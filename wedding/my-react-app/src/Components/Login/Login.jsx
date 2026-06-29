@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../assets/Style/Login.css";
+import logo from "../../assets/Images/logo.png";
 
 const Login = () => {
 
@@ -131,18 +132,25 @@ const Login = () => {
   return (
 
     <div className="login-container">
+<form
+  className="login-form"
+  onSubmit={handleSubmit}
+>
 
-      <form
-        className="login-form"
-        onSubmit={handleSubmit}
-      >
+  <div className="login-logo">
 
-        <h2>
+    <img
+      src={logo}
+      alt="Logo"
+    />
 
-          Log In
+  </div>
 
-        </h2>
+  <h2>
 
+    Log In
+
+  </h2>
         {/* ERROR MESSAGE */}
         {errorMessage && (
 
@@ -196,17 +204,17 @@ const Login = () => {
         </button>
 
         {/* SIGNUP LINK */}
-        <p className="signup-text">
+        <div className="signup-text">
 
-          Don’t have an account?
+          Don’t have an account? 
 
           <Link to="/sign">
 
-            Sign Up
+             <span> Sign Up</span>
 
           </Link>
 
-        </p>
+        </div>
 
       </form>
 

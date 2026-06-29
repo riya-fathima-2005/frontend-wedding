@@ -80,9 +80,7 @@ return (
         <div className="banner-overlay"></div>
 
         <div className="banner-content">
-          <h2 style={{marginTop:"200px"}}>VENUE</h2>
-          <p style={{marginTop:"120px", marginLeft:"305px", fontSize:"35px", fontFamily:"Cormorant Garamond, serif"}}>HOME / VENUE</p>
-        </div>
+          <h2>VENUE</h2></div>
       </div>
     </div>
 

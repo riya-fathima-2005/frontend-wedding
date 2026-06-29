@@ -25,13 +25,22 @@ console.log(wedding);
 
     {/* Left Side Image */}
     <div>
-      {wedding.profileImage && (
-        <img
-          src={wedding.profile_image}
-          alt="Wedding"
-          className="wedding-image1"
-        />
-      )}
+     <div>
+  {wedding.profile_image ? (
+    <img
+      src={wedding.profile_image}
+      alt="Wedding"
+      className="wedding-image1"
+    />
+  ) : (
+    <img
+      src="https://picsum.photos/400/500"
+      alt="No image"
+      className="wedding-image1"
+    />
+  )}
+</div>
+
     </div>
 
     {/* Right Side Content */}

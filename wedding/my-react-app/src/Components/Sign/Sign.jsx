@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../assets/Style/Sign.css";
+import logo from "../../assets/Images/logo.png";
 
 const Sign = () => {
 
@@ -117,7 +118,19 @@ const Sign = () => {
         onSubmit={handleSubmit}
       >
 
-        <h2>Create Account</h2>
+
+<div className="login-logo">
+
+  <img
+    src={logo}
+    alt="Logo"
+  />
+
+</div>
+
+<h2>
+Create Account
+</h2>
 
         {/* ERROR */}
         {errorMessage && (
@@ -192,10 +205,10 @@ const Sign = () => {
         </button>
 
         {/* LOGIN */}
-        <p className="login-text">
+        <div style={{color:"white"}} className="login-text">
           Already have an account?{" "}
           <Link to="/login">Login</Link>
-        </p>
+        </div>
 
       </form>
 

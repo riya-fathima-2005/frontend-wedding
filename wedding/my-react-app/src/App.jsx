@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 // NAVBAR & FOOTER
 import Nav from "./Components/Navbar/Nav";
@@ -55,10 +55,16 @@ import Smallprofile from "./Components/Navbar/Smallprofile";
 
 
 function App() {
+  const location = useLocation();
+
+  const hideLayout =
+    location.pathname === "/login" ||
+    location.pathname === "/sign";
+
   return (
     <>
       {/* NAVBAR */}
-      <Nav />
+      {!hideLayout && <Nav />}
 
       <Routes>
         {/* HOME */}
@@ -208,7 +214,7 @@ function App() {
       </Routes>
 
       {/* FOOTER */}
-      <Footer />
+      {!hideLayout && <Footer />}
     </>
   );
 }

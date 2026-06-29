@@ -20,7 +20,7 @@ const Blog = () => {
      
              <div className="banner-content">
                
-                <h2 style={{ marginLeft:"-720px", fontSize:"35px", fontFamily:"Cormorant Garamond, serif", color:"white"}}>HOME / BLOG</h2>
+               <h2 className="overlay-text">BLOG  </h2>
              </div>
            </div>
          </div>

@@ -5,41 +5,106 @@
 
   const API_URL = "https://wedding-book.onrender.com"
 
-  const Hostdetails = () => {
-    const navigate = useNavigate();
+const Hostdetails = () => {
+const navigate = useNavigate();
+const [weddingDate, setWeddingDate] = useState("");
+const [weddingTime, setWeddingTime] = useState("");
+const [venue, setVenue] = useState("");
+const [customVenue, setCustomVenue] = useState("");
+const [foodType, setFoodType] = useState("");
+const [alcoholServed, setAlcoholServed] = useState("");
+const [language, setLanguage] = useState("");
+const [dressCode, setDressCode] = useState("");
+const [description, setDescription] = useState("");
+const [managerPhone, setManagerPhone] = useState("");
+const [latitude, setLatitude] = useState("");
+const [longitude, setLongitude] = useState("");
+const [venues, setVenues] = useState([]);
+const [loading, setLoading] = useState(true);
 
-    const [weddingDate, setWeddingDate] = useState("");
-    const [weddingTime, setWeddingTime] = useState("");
-    const [venue, setVenue] = useState("");
-    const [customVenue, setCustomVenue] = useState("");
-    const [customVenuePrice, setCustomVenuePrice] = useState("");
-    const [foodType, setFoodType] = useState("");
-    const [alcoholServed, setAlcoholServed] = useState("");
-    const [language, setLanguage] = useState("");
-    const [dressCode, setDressCode] = useState("");
-    const [description, setDescription] = useState("");
-    const [managerPhone, setManagerPhone] = useState("");
-    const [latitude, setLatitude] = useState("");
-    const [longitude, setLongitude] = useState("");
-  
-    const [venues, setVenues] = useState([]);
+const foodOptions = [
+  "Vegetarian",
+  "Non-Vegetarian",
+  "Both"
+];
 
-    const foodOptions = ["Vegetarian", "Non-Vegetarian", "Both"];
+const alcoholOptions = [
+  "Yes",
+  "No"
+];
 
-    const alcoholOptions = ["Yes", "No"];
+const languages = [
+  "English",
+  "Malayalam",
+  "Hindi",
+  "Tamil"
+];
 
-    const languages = ["English", "Malayalam", "Hindi", "Tamil"];
+const dressCodes = [
+  "Traditional Kerala",
+  "Traditional Indian",
+  "Formal",
+  "Semi Formal",
+  "Casual",
+];
 
-    const dressCodes = [
-      "Traditional Kerala",
-      "Traditional Indian",
-      "Formal",
-      "Semi Formal",
-      "Casual",
-    ];
+// restore form data when coming back
+useEffect(() => {
+  const savedData = sessionStorage.getItem("hostDetails");
 
-  
-    const [loading, setLoading] = useState(true);
+  if (savedData) {
+    const data = JSON.parse(savedData);
+
+    setWeddingDate(data.weddingDate || "");
+    setWeddingTime(data.weddingTime || "");
+    setVenue(data.venue || "");
+    setCustomVenue(data.customVenue || "");
+    setFoodType(data.foodType || "");
+    setAlcoholServed(data.alcoholServed || "");
+    setLanguage(data.language || "");
+    setDressCode(data.dressCode || "");
+    setDescription(data.description || "");
+    setManagerPhone(data.managerPhone || "");
+    setLatitude(data.latitude || "");
+    setLongitude(data.longitude || "");
+  }
+}, []);
+
+// save form automatically
+useEffect(() => {
+  const formData = {
+    weddingDate,
+    weddingTime,
+    venue,
+    customVenue,
+    foodType,
+    alcoholServed,
+    language,
+    dressCode,
+    description,
+    managerPhone,
+    latitude,
+    longitude,
+  };
+
+  sessionStorage.setItem(
+    "hostDetails",
+    JSON.stringify(formData)
+  );
+}, [
+  weddingDate,
+  weddingTime,
+  venue,
+  customVenue,
+  foodType,
+  alcoholServed,
+  language,
+  dressCode,
+  description,
+  managerPhone,
+  latitude,
+  longitude,
+]);
 
   // fetch venues
   useEffect(() => {
@@ -126,14 +191,6 @@
     return;
   }
 
-  if (
-    venue === "other" &&
-    (!customVenue.trim() || !customVenuePrice)
-  ) {
-    alert("Please enter venue name and venue price");
-    return;
-  }
-
 
 
   const weddingData = {
@@ -144,10 +201,7 @@
         ? customVenue
         : selectedVenue?.name,
 
-    venuePrice:
-    venue === "other"
-      ? Number(customVenuePrice)
-      : selectedVenue?.price,
+   venuePrice: selectedVenue?.price || 0,
 
     weddingDate,
     weddingTime,
@@ -195,8 +249,8 @@
                             <div className="banner-overlay"></div>
                     
                             <div className="banner-content">
-                              <h2 style={{marginTop:"200px"}}>CONTACT</h2>
-                              <p style={{marginTop:"120px", marginLeft:"235px", fontSize:"35px", fontFamily:"Cormorant Garamond, serif"}}>HOME / HOST DETAILS</p>
+                              <h2>HOST</h2>
+                             
                             </div>
                           </div>
                         </div>
@@ -261,37 +315,23 @@
 
 
 
-      {venue === "other" && (
-    <>
-      <div className="mt-3">
-        <label>Custom Venue Name *</label>
+    {venue === "other" && (
+  <>
+    <div className="mt-3">
+      <label>Custom Venue Name *</label>
 
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Enter your venue name"
-          value={customVenue}
-          onChange={(e) =>
-            setCustomVenue(e.target.value)
-          }
-        />
-      </div>
-
-      <div className="mt-3">
-        <label>Venue Price *</label>
-
-        <input
-          type="number"
-          className="form-control"
-          placeholder="Enter venue price"
-          value={customVenuePrice}
-          onChange={(e) =>
-            setCustomVenuePrice(e.target.value)
-          }
-        />
-      </div>
-    </>
-  )}
+      <input
+        type="text"
+        className="form-control"
+        placeholder="Enter your venue name"
+        value={customVenue}
+        onChange={(e) =>
+          setCustomVenue(e.target.value)
+        }
+      />
+    </div>
+  </>
+)}
     </div>
 
 
@@ -402,14 +442,16 @@
   </div>
 
   <div className="mb-3">
-    <label>Manager Phone Number *</label>
+    <label>Nominee's Phone Number *</label>
     <input
       type="text"
       className="form-control"
+      placeholder="Enter phone number for guest communication"
       value={managerPhone}
       onChange={(e) => setManagerPhone(e.target.value)}
     />
   </div>
+  <p></p>
 
   <div className="mb-3">
     <button
